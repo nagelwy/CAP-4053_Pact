@@ -2,7 +2,7 @@
 
 This is the repository for all files related to the videogame "Pact".
 
-Contributions:
+Contributors:
   - Matthew Quach
   - Eric Gass
   - Santiago Posse
