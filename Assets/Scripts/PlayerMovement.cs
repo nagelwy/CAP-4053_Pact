@@ -10,16 +10,21 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private Rigidbody2D rb;
     [SerializeField] private Transform groundCheck;
     [SerializeField] private LayerMask groundLayer;
+    [SerializeField] private Transform HitBox;
+    [SerializeField] private LayerMask defaultLayer;
     private SpriteRenderer f;
+    private Animator anim;
+    private int dashing;
+    private bool canDash = true;
+    private bool isDashing;
     private int rdashCounter = 0;
     private float rdashTimer;
     private int ldashCounter = 0;
     private float ldashTimer;
+    private float AttackTimer = 0;
+    public float AttackDelay;
     public float doubleTapTime = 0.3f;
     public float dashTime;
-    private int dashing;
-    private bool canDash = true;
-    private bool isDashing;
     public float dashingPower;
     public float dashCD;
     public float gravity;
@@ -27,6 +32,7 @@ public class PlayerMovement : MonoBehaviour
     void Start()
     {
         f = gameObject.GetComponent<SpriteRenderer>();
+        anim = gameObject.GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -36,6 +42,19 @@ public class PlayerMovement : MonoBehaviour
         {
             return;
         }
+        //ATTACKING
+
+        if(Input.GetAxis("Attack")!=0 && AttackTimer <= 0)
+        {
+            anim.SetTrigger("Attack");
+        }
+
+        if(AttackTimer > 0)
+        {
+            AttackTimer -= Time.deltaTime;
+        }
+
+
         //LEFT RIGHT MOVEMENT
         float x = Input.GetAxis("Horizontal");
         rb.velocity = new Vector2(x*speed, rb.velocity.y);
@@ -43,11 +62,11 @@ public class PlayerMovement : MonoBehaviour
 
         if(x != 0 )
         {
-            gameObject.GetComponent<Animator>().SetBool("Walking",true);
+            anim.SetBool("Walking",true);
         }
         else
         {
-            gameObject.GetComponent<Animator>().SetBool("Walking",false);
+            anim.SetBool("Walking",false);
         }
 
         //JUMPING
@@ -64,7 +83,7 @@ public class PlayerMovement : MonoBehaviour
                 if(rdashCounter == 1)
                 {
                     Debug.Log("right");
-                    StartCoroutine(dash());
+                    StartCoroutine(dash(true));
                 }
             }
             if(Input.GetKeyUp("d"))
@@ -78,7 +97,7 @@ public class PlayerMovement : MonoBehaviour
                 if(ldashCounter == 1)
                 {
                     Debug.Log("left");
-                    StartCoroutine(dash());
+                    StartCoroutine(dash(false));
                 }
             }
             if(Input.GetKeyUp("a"))
@@ -127,18 +146,40 @@ public class PlayerMovement : MonoBehaviour
             gameObject.transform.localScale = new Vector3(1,1,1);
         }
     }
-    private IEnumerator dash()
+    private IEnumerator dash(bool right)
     {
         canDash = false;
         isDashing = true;
         rb.gravityScale = 0f;
         
-            rb.velocity = new Vector2(transform.localScale.x * dashingPower, 0f);
+        if(facingRight && !right)
+        {
+            rb.velocity = new Vector2(transform.localScale.x * -dashingPower, 0f);
+        }
+        else if(!facingRight && right)
+        {
+            rb.velocity = new Vector2(transform.localScale.x * -dashingPower, 0f);
+        }
+        else
+        {
+           rb.velocity = new Vector2(transform.localScale.x * dashingPower, 0f);
+        }
 
         yield return new WaitForSeconds(dashTime);
         rb.gravityScale = gravity;
         isDashing = false;
         yield return new WaitForSeconds(dashCD);
         canDash = true;
+    }
+    void EndAttack()
+    {
+        anim.SetBool("Attack", false);
+        AttackTimer = AttackDelay;
+    }
+    void ScanAttack()
+    {
+       List<Collider2D> ColList;
+       bool work = Physics2D.OverlapCircle(HitBox.position,0.2f,defaultLayer);
+       //Debug.Log(ColList);
     }
 }
