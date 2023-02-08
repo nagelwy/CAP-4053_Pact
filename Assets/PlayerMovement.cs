@@ -64,7 +64,7 @@ public class PlayerMovement : MonoBehaviour
                 if(rdashCounter == 1)
                 {
                     Debug.Log("right");
-                    StartCoroutine(dash(true));
+                    StartCoroutine(dash());
                 }
             }
             if(Input.GetKeyUp("d"))
@@ -78,7 +78,7 @@ public class PlayerMovement : MonoBehaviour
                 if(ldashCounter == 1)
                 {
                     Debug.Log("left");
-                    StartCoroutine(dash(false));
+                    StartCoroutine(dash());
                 }
             }
             if(Input.GetKeyUp("a"))
@@ -118,28 +118,23 @@ public class PlayerMovement : MonoBehaviour
         if(x < 0f)
         {
             facingRight = false;
+            gameObject.transform.localScale = new Vector3(-1,1,1);
             
-            f.flipX = true;
         }
         else if( x > 0f)
         {
             facingRight = true;
-            f.flipX = false;
+            gameObject.transform.localScale = new Vector3(1,1,1);
         }
     }
-    private IEnumerator dash(bool right)
+    private IEnumerator dash()
     {
         canDash = false;
         isDashing = true;
         rb.gravityScale = 0f;
-        if(right)
-        {
+        
             rb.velocity = new Vector2(transform.localScale.x * dashingPower, 0f);
-        }
-        else
-        {
-            rb.velocity = new Vector2(transform.localScale.x * -dashingPower, 0f);
-        }
+
         yield return new WaitForSeconds(dashTime);
         rb.gravityScale = gravity;
         isDashing = false;
