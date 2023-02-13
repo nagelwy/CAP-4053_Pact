@@ -28,6 +28,8 @@ public class PlayerMovement : MonoBehaviour
     public float dashingPower;
     public float dashCD;
     public float gravity;
+    private bool hasDoubleJump;
+    private bool isJumping;
     // Start is called before the first frame update
     void Start()
     {
@@ -70,13 +72,31 @@ public class PlayerMovement : MonoBehaviour
         }
 
         //JUMPING
-        if(Input.GetAxis("Jump")!= 0 && IsGrounded())
+
+        bool grounded = IsGrounded();
+        if (Input.GetAxis("Jump")!= 0 && grounded)
         {
             rb.velocity = new Vector2(rb.velocity.x, jumpPower);
+            isJumping = true;
+        }
+
+        if(Input.GetButtonUp("Jump"))
+        {
+            isJumping = false;
+        }
+
+        if(!grounded && hasDoubleJump && !isJumping && Input.GetAxis("Jump") != 0)
+        {
+            rb.velocity = new Vector2(rb.velocity.x, jumpPower);
+            hasDoubleJump = false;
+        }
+        if(grounded)
+        {
+            hasDoubleJump = true;
         }
 
         // DASHING
-        if(canDash)
+        if (canDash)
         {
             if(Input.GetKeyDown("d"))
             {
@@ -130,7 +150,7 @@ public class PlayerMovement : MonoBehaviour
 
     private bool IsGrounded()
     {
-        return Physics2D.OverlapCircle(groundCheck.position,0.2f,groundLayer);
+        return Physics2D.OverlapCircle(groundCheck.position,0.3f,groundLayer);
     }
     private void flip(float x)
     {
