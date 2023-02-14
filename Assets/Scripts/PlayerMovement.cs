@@ -30,11 +30,13 @@ public class PlayerMovement : MonoBehaviour
     public float gravity;
     private bool hasDoubleJump;
     private bool isJumping;
+    private SoundController sc;
     // Start is called before the first frame update
     void Start()
     {
         f = gameObject.GetComponent<SpriteRenderer>();
         anim = gameObject.GetComponent<Animator>();
+        sc = GameObject.Find("SoundManager").GetComponent<SoundController>();
     }
 
     // Update is called once per frame
@@ -74,9 +76,10 @@ public class PlayerMovement : MonoBehaviour
         //JUMPING
 
         bool grounded = IsGrounded();
-        if (Input.GetAxis("Jump")!= 0 && grounded)
+        if (Input.GetAxis("Jump")!= 0 && grounded && !isJumping)
         {
             rb.velocity = new Vector2(rb.velocity.x, jumpPower);
+            sc.PlaySound(0);
             isJumping = true;
         }
 
@@ -88,6 +91,7 @@ public class PlayerMovement : MonoBehaviour
         if(!grounded && hasDoubleJump && !isJumping && Input.GetAxis("Jump") != 0)
         {
             rb.velocity = new Vector2(rb.velocity.x, jumpPower);
+            sc.PlaySound(0);
             hasDoubleJump = false;
         }
         if(grounded)
@@ -184,6 +188,7 @@ public class PlayerMovement : MonoBehaviour
         {
            rb.velocity = new Vector2(transform.localScale.x * dashingPower, 0f);
         }
+        sc.PlaySound(1);
 
         yield return new WaitForSeconds(dashTime);
         rb.gravityScale = gravity;
