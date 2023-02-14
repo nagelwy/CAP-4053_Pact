@@ -755,6 +755,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 5506952229103226164, guid: aa4ae81b71051f74b912383e56a5c2a7, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 46b5396c723359f479deb1f6bbc463b5, type: 3}
+    - target: {fileID: 5506952229103226169, guid: aa4ae81b71051f74b912383e56a5c2a7, type: 3}
+      propertyPath: comboReset
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5506952229103226171, guid: aa4ae81b71051f74b912383e56a5c2a7, type: 3}
       propertyPath: m_Name
       value: Player
@@ -801,6 +809,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5506952229502335082, guid: aa4ae81b71051f74b912383e56a5c2a7, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5506952230154310706, guid: aa4ae81b71051f74b912383e56a5c2a7, type: 3}
+      propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []

@@ -22,6 +22,9 @@ public class PlayerMovement : MonoBehaviour
     private int ldashCounter = 0;
     private float ldashTimer;
     private float AttackTimer = 0;
+    private float ComboTimer = 0;
+    public float comboReset;
+    public int comboNum = 0;
     public float AttackDelay;
     public float doubleTapTime = 0.3f;
     public float dashTime;
@@ -48,14 +51,30 @@ public class PlayerMovement : MonoBehaviour
         }
         //ATTACKING
 
-        if(Input.GetAxis("Attack")!=0 && AttackTimer <= 0)
+        if (Input.GetAxis("Attack") != 0 && AttackTimer <= 0 && comboNum == 0)
         {
-            anim.SetTrigger("Attack");
+            anim.SetBool("Attack",true);
+        }
+        else if (Input.GetAxis("Attack") != 0 && AttackTimer <= 0 && comboNum == 1)
+        {
+            anim.SetBool("Attack2",true);
+        }
+        else if (Input.GetAxis("Attack") != 0 && AttackTimer <= 0 && comboNum == 2)
+        {
+            anim.SetBool("Attack3",true);
         }
 
-        if(AttackTimer > 0)
+        if (AttackTimer > 0)
         {
             AttackTimer -= Time.deltaTime;
+        }
+        if(ComboTimer > 0)
+        {
+            ComboTimer -= Time.deltaTime;
+        }
+        else
+        {
+            comboNum = 0;
         }
 
 
@@ -199,7 +218,15 @@ public class PlayerMovement : MonoBehaviour
     void EndAttack()
     {
         anim.SetBool("Attack", false);
+        anim.SetBool("Attack2", false);
+        anim.SetBool("Attack3", false);
         AttackTimer = AttackDelay;
+        ComboTimer = comboReset;
+        comboNum++;
+        if(comboNum == 3)
+        {
+            comboNum = 0;
+        }
     }
     void ScanAttack()
     {
