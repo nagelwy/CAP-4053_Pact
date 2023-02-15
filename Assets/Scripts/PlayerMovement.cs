@@ -22,9 +22,8 @@ public class PlayerMovement : MonoBehaviour
     private int ldashCounter = 0;
     private float ldashTimer;
     private float AttackTimer = 0;
-    private float ComboTimer = 0;
-    public float comboReset;
     public int comboNum = 0;
+    public bool attackHeld;
     public float AttackDelay;
     public float doubleTapTime = 0.3f;
     public float dashTime;
@@ -54,6 +53,10 @@ public class PlayerMovement : MonoBehaviour
         if (Input.GetAxis("Attack") != 0 && AttackTimer <= 0 && comboNum == 0)
         {
             anim.SetBool("Attack",true);
+            attackHeld = true;
+            anim.SetBool("AttackHeld", true);
+            AttackTimer = AttackDelay;
+
         }
         else if (Input.GetAxis("Attack") != 0 && AttackTimer <= 0 && comboNum == 1)
         {
@@ -68,13 +71,11 @@ public class PlayerMovement : MonoBehaviour
         {
             AttackTimer -= Time.deltaTime;
         }
-        if(ComboTimer > 0)
-        {
-            ComboTimer -= Time.deltaTime;
-        }
-        else
+        if(Input.GetAxis("Attack") == 0)
         {
             comboNum = 0;
+            attackHeld = false;
+            anim.SetBool("AttackHeld", false);
         }
 
 
@@ -221,7 +222,6 @@ public class PlayerMovement : MonoBehaviour
         anim.SetBool("Attack2", false);
         anim.SetBool("Attack3", false);
         AttackTimer = AttackDelay;
-        ComboTimer = comboReset;
         comboNum++;
         if(comboNum == 3)
         {
