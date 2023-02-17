@@ -11,23 +11,35 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private Rigidbody2D rb;
     [SerializeField] private Transform groundCheck;
     [SerializeField] private LayerMask groundLayer;
+    [SerializeField] private Transform HitBox;
+    [SerializeField] private LayerMask defaultLayer;
     private SpriteRenderer f;
+    private Animator anim;
+    private int dashing;
+    private bool canDash = true;
+    private bool isDashing;
     private int rdashCounter = 0;
     private float rdashTimer;
     private int ldashCounter = 0;
     private float ldashTimer;
+    private float AttackTimer = 0;
+    public int comboNum = 0;
+    public bool attackHeld;
+    public float AttackDelay;
     public float doubleTapTime = 0.3f;
     public float dashTime;
-    private int dashing;
-    private bool canDash = true;
-    private bool isDashing;
     public float dashingPower;
     public float dashCD;
     public float gravity;
+    private bool hasDoubleJump;
+    private bool isJumping;
+    private SoundController sc;
     // Start is called before the first frame update
     void Start()
     {
         f = gameObject.GetComponent<SpriteRenderer>();
+        anim = gameObject.GetComponent<Animator>();
+        sc = GameObject.Find("SoundManager").GetComponent<SoundController>();
     }
 
     // Update is called once per frame
@@ -37,6 +49,37 @@ public class PlayerMovement : MonoBehaviour
         {
             return;
         }
+        //ATTACKING
+
+        if (Input.GetAxis("Attack") != 0 && AttackTimer <= 0 && comboNum == 0)
+        {
+            anim.SetBool("Attack",true);
+            attackHeld = true;
+            anim.SetBool("AttackHeld", true);
+            AttackTimer = AttackDelay;
+
+        }
+        else if (Input.GetAxis("Attack") != 0 && AttackTimer <= 0 && comboNum == 1)
+        {
+            anim.SetBool("Attack2",true);
+        }
+        else if (Input.GetAxis("Attack") != 0 && AttackTimer <= 0 && comboNum == 2)
+        {
+            anim.SetBool("Attack3",true);
+        }
+
+        if (AttackTimer > 0)
+        {
+            AttackTimer -= Time.deltaTime;
+        }
+        if(Input.GetAxis("Attack") == 0)
+        {
+            comboNum = 0;
+            attackHeld = false;
+            anim.SetBool("AttackHeld", false);
+        }
+
+
         //LEFT RIGHT MOVEMENT
         float x = Input.GetAxis("Horizontal");
         rb.velocity = new Vector2(x*speed, rb.velocity.y);
@@ -44,21 +87,41 @@ public class PlayerMovement : MonoBehaviour
 
         if(x != 0 )
         {
-            gameObject.GetComponent<Animator>().SetBool("Walking",true);
+            anim.SetBool("Walking",true);
         }
         else
         {
-            gameObject.GetComponent<Animator>().SetBool("Walking",false);
+            anim.SetBool("Walking",false);
         }
 
         //JUMPING
-        if(Input.GetAxis("Jump")!= 0 && IsGrounded())
+
+        bool grounded = IsGrounded();
+        if (Input.GetAxis("Jump")!= 0 && grounded && !isJumping)
         {
             rb.velocity = new Vector2(rb.velocity.x, jumpPower);
+            sc.PlaySound(0);
+            isJumping = true;
+        }
+
+        if(Input.GetButtonUp("Jump"))
+        {
+            isJumping = false;
+        }
+
+        if(!grounded && hasDoubleJump && !isJumping && Input.GetAxis("Jump") != 0)
+        {
+            rb.velocity = new Vector2(rb.velocity.x, jumpPower);
+            sc.PlaySound(0);
+            hasDoubleJump = false;
+        }
+        if(grounded)
+        {
+            hasDoubleJump = true;
         }
 
         // DASHING
-        if(canDash)
+        if (canDash)
         {
             if(Input.GetKeyDown("d"))
             {
@@ -112,20 +175,20 @@ public class PlayerMovement : MonoBehaviour
 
     private bool IsGrounded()
     {
-        return Physics2D.OverlapCircle(groundCheck.position,0.2f,groundLayer);
+        return Physics2D.OverlapCircle(groundCheck.position,0.3f,groundLayer);
     }
     private void flip(float x)
     {
         if(x < 0f)
         {
             facingRight = false;
+            gameObject.transform.localScale = new Vector3(-1,1,1);
             
-            f.flipX = true;
         }
         else if( x > 0f)
         {
             facingRight = true;
-            f.flipX = false;
+            gameObject.transform.localScale = new Vector3(1,1,1);
         }
     }
     private IEnumerator dash(bool right)
@@ -133,18 +196,43 @@ public class PlayerMovement : MonoBehaviour
         canDash = false;
         isDashing = true;
         rb.gravityScale = 0f;
-        if(right)
-        {
-            rb.velocity = new Vector2(transform.localScale.x * dashingPower, 0f);
-        }
-        else
+        
+        if(facingRight && !right)
         {
             rb.velocity = new Vector2(transform.localScale.x * -dashingPower, 0f);
         }
+        else if(!facingRight && right)
+        {
+            rb.velocity = new Vector2(transform.localScale.x * -dashingPower, 0f);
+        }
+        else
+        {
+           rb.velocity = new Vector2(transform.localScale.x * dashingPower, 0f);
+        }
+        sc.PlaySound(1);
+
         yield return new WaitForSeconds(dashTime);
         rb.gravityScale = gravity;
         isDashing = false;
         yield return new WaitForSeconds(dashCD);
         canDash = true;
+    }
+    void EndAttack()
+    {
+        anim.SetBool("Attack", false);
+        anim.SetBool("Attack2", false);
+        anim.SetBool("Attack3", false);
+        AttackTimer = AttackDelay;
+        comboNum++;
+        if(comboNum == 3)
+        {
+            comboNum = 0;
+        }
+    }
+    void ScanAttack()
+    {
+       List<Collider2D> ColList;
+       bool work = Physics2D.OverlapCircle(HitBox.position,0.2f,defaultLayer);
+       //Debug.Log(ColList);
     }
 }
