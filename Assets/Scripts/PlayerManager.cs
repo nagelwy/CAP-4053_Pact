@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerManager : MonoBehaviour
 {
@@ -10,6 +11,10 @@ public class PlayerManager : MonoBehaviour
     public float AttackTime;
     public float Damage;
     public float CDR;
+    public Pact pact;
+    public Item ability1;
+    public Item ability2;
+    public Image[] icons;
 
     // Start is called before the first frame update
     void Start()
@@ -20,10 +25,23 @@ public class PlayerManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if(Input.GetAxis("Ability 1") != 0)
+        {
+            ability1.onUse();
+        }
+        if(Input.GetAxis("Ability 2") != 0)
+        {
+            ability2.onUse();
+        }
     }
     public void takeDamage(float damage)
     {
         currentHealth -= damage;
+    }
+    public void UpdateIcons()
+    {
+        icons[0].sprite = pact.getIcon();
+        icons[1].sprite = ability1.getIcon();
+        icons[2].sprite = ability2.getIcon();
     }
 }

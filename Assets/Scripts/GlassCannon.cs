@@ -14,6 +14,7 @@ public class GlassCannon : MonoBehaviour, Pact
     private PlayerManager pm;
     public float healthDivide;
     public float damageMult;
+    public Sprite icon;
 
     void Start()
     {
@@ -29,6 +30,10 @@ public class GlassCannon : MonoBehaviour, Pact
         pm = GameObject.Find("Player").GetComponent<PlayerManager>();
         pm.MaxHealth /= healthDivide;
         pm.Damage *= damageMult;
-        PactSelect.SetActive(false);
+        pm.pact = this;
+    }
+    public Sprite getIcon()
+    {
+        return icon;
     }
 }

@@ -2,13 +2,18 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public interface Pact
+public interface Item
 {
+    
+    public void onUse()
+    {
+        //this will be called when the ability of the item is used.
+    }
     public void displayInfo()
     {
         
     }
-    public void UpdateStats()
+    public void onSelect()
     {
 
     }
