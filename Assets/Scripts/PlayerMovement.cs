@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
-    public float speed;
     public float jumpPower;
     private bool facingRight;
     [SerializeField] private Rigidbody2D rb;
@@ -24,7 +23,6 @@ public class PlayerMovement : MonoBehaviour
     private float AttackTimer = 0;
     public int comboNum = 0;
     public bool attackHeld;
-    public float AttackDelay;
     public float doubleTapTime = 0.3f;
     public float dashTime;
     public float dashingPower;
@@ -33,9 +31,11 @@ public class PlayerMovement : MonoBehaviour
     private bool hasDoubleJump;
     private bool isJumping;
     private SoundController sc;
+    private PlayerManager pm;
     // Start is called before the first frame update
     void Start()
     {
+        pm = gameObject.GetComponent<PlayerManager>();
         f = gameObject.GetComponent<SpriteRenderer>();
         anim = gameObject.GetComponent<Animator>();
         sc = GameObject.Find("SoundManager").GetComponent<SoundController>();
@@ -55,7 +55,7 @@ public class PlayerMovement : MonoBehaviour
             anim.SetBool("Attack",true);
             attackHeld = true;
             anim.SetBool("AttackHeld", true);
-            AttackTimer = AttackDelay;
+            AttackTimer = pm.AttackTime;
 
         }
         else if (Input.GetAxis("Attack") != 0 && AttackTimer <= 0 && comboNum == 1)
@@ -81,7 +81,7 @@ public class PlayerMovement : MonoBehaviour
 
         //LEFT RIGHT MOVEMENT
         float x = Input.GetAxis("Horizontal");
-        rb.velocity = new Vector2(x*speed, rb.velocity.y);
+        rb.velocity = new Vector2(x*pm.MoveSpeed, rb.velocity.y);
         flip(x);
 
         if(x != 0 )
@@ -221,7 +221,7 @@ public class PlayerMovement : MonoBehaviour
         anim.SetBool("Attack", false);
         anim.SetBool("Attack2", false);
         anim.SetBool("Attack3", false);
-        AttackTimer = AttackDelay;
+        AttackTimer = pm.AttackTime;
         comboNum++;
         if(comboNum == 3)
         {
