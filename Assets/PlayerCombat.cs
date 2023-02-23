@@ -46,7 +46,7 @@ public class PlayerCombat : MonoBehaviour
         {
             gameObject.transform.localScale = new Vector3(-1,1,1);
         }
-        int x = Random.Range(0,3);
+        int x = Random.Range(0,2);
         if(x == 0)
         {
             anim.SetBool("Attack", true);
@@ -55,10 +55,10 @@ public class PlayerCombat : MonoBehaviour
         {
             anim.SetBool("Attack2", true);
         }
-        else
+        /*else
         {
             anim.SetBool("Attack3", true);
-        }
+        }*/
 
         // Detect Enemies
         Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(attackPoint.position,attackRange,enemyLayers);
@@ -73,10 +73,7 @@ public class PlayerCombat : MonoBehaviour
     {
         anim.SetBool("Attack", false);
         anim.SetBool("Attack2", false);
-        anim.SetBool("Attack3", false);
+        //anim.SetBool("Attack3", false);
         gameObject.GetComponent<PlayerMovement>().attacking = false;
-    }
-    void ScanAttack()
-    {
     }
 }
