@@ -1289,7 +1289,7 @@ MonoBehaviour:
   MaxHealth: 10
   currentHealth: 10
   MoveSpeed: 10
-  AttackTime: 0.3
+  AttackTime: 0.4
   Damage: 1
   CDR: 1
   icons:
@@ -1299,6 +1299,29 @@ MonoBehaviour:
 --- !u!4 &940749042 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6156370897156506785, guid: aa4ae81b71051f74b912383e56a5c2a7, type: 3}
+  m_PrefabInstance: {fileID: 8176731153167371275}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &940749043
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 940749035}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: caae865beeda1fe45ba002ab34c277eb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  anim: {fileID: 940749044}
+  attackPoint: {fileID: 1220036656}
+  attackRange: 0.5
+  enemyLayers:
+    serializedVersion: 2
+    m_Bits: 128
+--- !u!95 &940749044 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 2097711928229475027, guid: aa4ae81b71051f74b912383e56a5c2a7, type: 3}
   m_PrefabInstance: {fileID: 8176731153167371275}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &997867801
@@ -1583,6 +1606,11 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1212142355}
   m_CullTransparentMesh: 1
+--- !u!4 &1220036656 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 8780062238883162790, guid: aa4ae81b71051f74b912383e56a5c2a7, type: 3}
+  m_PrefabInstance: {fileID: 8176731153167371275}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1283537285
 GameObject:
   m_ObjectHideFlags: 0
@@ -3128,7 +3156,7 @@ GameObject:
   - component: {fileID: 1776416377}
   - component: {fileID: 1776416380}
   - component: {fileID: 1776416381}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: ENEMY
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -3261,7 +3289,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4c49bd32fc674a24d97f00c838376773, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 10
+  maxHealth: 10
+  currentHealth: 0
 --- !u!1 &1785932439
 GameObject:
   m_ObjectHideFlags: 0
@@ -3902,6 +3931,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 5777237449166906334, guid: aa4ae81b71051f74b912383e56a5c2a7, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6156370897156506785, guid: aa4ae81b71051f74b912383e56a5c2a7, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -7.68
+      objectReference: {fileID: 0}
     - target: {fileID: 8176731151660967065, guid: aa4ae81b71051f74b912383e56a5c2a7, type: 3}
       propertyPath: m_Name
       value: Player
@@ -3950,5 +3987,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 5773450514667884777, guid: aa4ae81b71051f74b912383e56a5c2a7, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: aa4ae81b71051f74b912383e56a5c2a7, type: 3}

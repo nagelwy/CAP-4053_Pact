@@ -4,13 +4,14 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
-    public float health;
+    public float maxHealth;
+    public float currentHealth;
 
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        currentHealth = maxHealth;
     }
 
     // Update is called once per frame
@@ -21,6 +22,17 @@ public class Enemy : MonoBehaviour
     public void Hit(float Damage)
     {
         Debug.Log("I was Hit!");
-        health-= Damage;
+        currentHealth-= Damage;
+        if(currentHealth <=0)
+        {
+            //die
+            Debug.Log(gameObject.name +" is Dead!");
+            Die();
+        }
+    }
+    void Die()
+    {
+        //Die Animation
+        gameObject.SetActive(false); // fix this to fully despawn enemy.
     }
 }

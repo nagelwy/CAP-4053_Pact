@@ -21,9 +21,6 @@ public class PlayerMovement : MonoBehaviour
     private float rdashTimer;
     private int ldashCounter = 0;
     private float ldashTimer;
-    private float AttackTimer = 0;
-    public int comboNum = 0;
-    public bool attackHeld;
     public float doubleTapTime = 0.3f;
     public float dashTime;
     public float dashingPower;
@@ -33,6 +30,7 @@ public class PlayerMovement : MonoBehaviour
     private bool isJumping;
     private SoundController sc;
     private PlayerManager pm;
+    public bool attacking;
     // Start is called before the first frame update
     void Start()
     {
@@ -49,36 +47,6 @@ public class PlayerMovement : MonoBehaviour
         {
             return;
         }
-        //ATTACKING
-
-        if (Input.GetAxis("Attack") != 0 && AttackTimer <= 0 && comboNum == 0)
-        {
-            anim.SetBool("Attack",true);
-            attackHeld = true;
-            anim.SetBool("AttackHeld", true);
-            AttackTimer = pm.AttackTime;
-
-        }
-        else if (Input.GetAxis("Attack") != 0 && AttackTimer <= 0 && comboNum == 1)
-        {
-            anim.SetBool("Attack2",true);
-        }
-        else if (Input.GetAxis("Attack") != 0 && AttackTimer <= 0 && comboNum == 2)
-        {
-            anim.SetBool("Attack3",true);
-        }
-
-        if (AttackTimer > 0)
-        {
-            AttackTimer -= Time.deltaTime;
-        }
-        if(Input.GetAxis("Attack") == 0)
-        {
-            comboNum = 0;
-            attackHeld = false;
-            anim.SetBool("AttackHeld", false);
-        }
-
 
         //LEFT RIGHT MOVEMENT
         float x = Input.GetAxis("Horizontal");
@@ -179,16 +147,19 @@ public class PlayerMovement : MonoBehaviour
     }
     private void flip(float x)
     {
-        if(x < 0f)
+        if(!attacking)
         {
-            facingRight = false;
-            gameObject.transform.localScale = new Vector3(-1,1,1);
-            
-        }
-        else if( x > 0f)
-        {
-            facingRight = true;
-            gameObject.transform.localScale = new Vector3(1,1,1);
+            if(x < 0f)
+            {
+                facingRight = false;
+                gameObject.transform.localScale = new Vector3(-1,1,1);
+                
+            }
+            else if( x > 0f)
+            {
+                facingRight = true;
+                gameObject.transform.localScale = new Vector3(1,1,1);
+            }
         }
     }
     private IEnumerator dash(bool right)
@@ -216,23 +187,5 @@ public class PlayerMovement : MonoBehaviour
         isDashing = false;
         yield return new WaitForSeconds(dashCD);
         canDash = true;
-    }
-    void EndAttack()
-    {
-        anim.SetBool("Attack", false);
-        anim.SetBool("Attack2", false);
-        anim.SetBool("Attack3", false);
-        AttackTimer = pm.AttackTime;
-        comboNum++;
-        if(comboNum == 3)
-        {
-            comboNum = 0;
-        }
-    }
-    void ScanAttack()
-    {
-       List<Collider2D> ColList;
-       bool work = Physics2D.OverlapCircle(HitBox.position,0.2f,defaultLayer);
-       //Debug.Log(ColList);
     }
 }
