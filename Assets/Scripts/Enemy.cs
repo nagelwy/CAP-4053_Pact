@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Pathfinding;
 
-public class flyingEnemy : MonoBehaviour
+public class Enemy : MonoBehaviour
 {
     public float health;
 
@@ -13,17 +13,22 @@ public class flyingEnemy : MonoBehaviour
     public float pathUpdateSeconds = 2f;
 
     [Header("Physics")]
-    public float speed = 300f;
+    public float speed = 200f;
     public float nextWaypointDistance = 3f;
+    public float jumpNodeHeightRequirement = 0.8f;
+    public float jumpModifier = 0.3f;
+    public float jumpCheckOffset = 0.1f;
 
     [Header("Custom Behavior")]
     public bool followEnable = true;
+    public bool jumpEnable = false;
     public bool directionLookEnabled = true;
 
     // Path variables for finding player and waypoints
     private Path path;
     private int currentWaypoint = 0;
-    private bool pathIsEnded = false;
+    // private bool pathIsEnded = false;
+    bool isGrounded = false;
     Seeker seeker;
     Rigidbody2D rb;
     
@@ -81,12 +86,25 @@ public class flyingEnemy : MonoBehaviour
             return;
         }
 
+        // check if colliding
+        Vector3 startOffset = transform.position - new Vector3(0f, GetComponent<Collider2D>().bounds.extents.y + jumpCheckOffset);
+        isGrounded = Physics2D.Raycast(startOffset, -Vector3.up, 0.05f);
+
         //directions
-        Vector3 direction = (path.vectorPath[currentWaypoint] - transform.position).normalized;
-        direction *= speed * Time.fixedDeltaTime;
+        Vector2 direction = ((Vector2)path.vectorPath[currentWaypoint] - rb.position).normalized;
+        Vector2 force = direction * speed * Time.deltaTime;
+
+        // Jump
+        if(jumpEnable && isGrounded)
+        {
+            if(direction.y > jumpNodeHeightRequirement)
+            {
+                rb.AddForce(Vector2.up * speed * jumpModifier);
+            }
+        }
 
         // Movement
-        rb.AddForce(direction);
+        rb.AddForce(force);
 
         // Next point
         float distance = Vector3.Distance(transform.position, path.vectorPath[currentWaypoint]);

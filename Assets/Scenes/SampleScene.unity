@@ -891,7 +891,7 @@ GameObject:
   - component: {fileID: 1635380752}
   - component: {fileID: 1635380758}
   m_Layer: 6
-  m_Name: fEnemy
+  m_Name: Enemy1
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -937,7 +937,7 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 1
+  m_Mass: 0.5
   m_LinearDrag: 2
   m_AngularDrag: 0.05
   m_GravityScale: 0
@@ -1032,7 +1032,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1635380751}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -3.27, y: 4.65, z: 0}
+  m_LocalPosition: {x: 19.42, y: 4.45, z: 0}
   m_LocalScale: {x: 0.97348, y: 0.97348, z: 0.97348}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1048,16 +1048,20 @@ MonoBehaviour:
   m_GameObject: {fileID: 1635380751}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bb64b3b354bbd614d8605270fdc11413, type: 3}
+  m_Script: {fileID: 11500000, guid: d34ba78101d787b4ab58fdbe926f5093, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   health: 0
   target: {fileID: 1727408278}
   activateDistance: 50
-  pathUpdateSeconds: 2
-  speed: 600
+  pathUpdateSeconds: 0.5
+  speed: 300
   nextWaypointDistance: 3
+  jumpNodeHeightRequirement: 0.8
+  jumpModifier: 0.4
+  jumpCheckOffset: 0.1
   followEnable: 1
+  jumpEnable: 0
   directionLookEnabled: 1
 --- !u!1 &1727408274
 GameObject:
@@ -1257,10 +1261,10 @@ GameObject:
   - component: {fileID: 1776416378}
   - component: {fileID: 1776416377}
   - component: {fileID: 1776416380}
-  - component: {fileID: 1776416383}
   - component: {fileID: 1776416382}
+  - component: {fileID: 1776416383}
   m_Layer: 6
-  m_Name: gEnemy
+  m_Name: Enemy2
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1352,7 +1356,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1776416375}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 6.6, y: 1.72, z: 0}
+  m_LocalPosition: {x: 22.04, y: 0.5, z: 0}
   m_LocalScale: {x: 0.97348, y: 0.97348, z: 0.97348}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1372,7 +1376,7 @@ Rigidbody2D:
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 1
-  m_LinearDrag: 1
+  m_LinearDrag: 2
   m_AngularDrag: 0.05
   m_GravityScale: 1
   m_Material: {fileID: 0}
@@ -1417,17 +1421,17 @@ MonoBehaviour:
   m_GameObject: {fileID: 1776416375}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4c49bd32fc674a24d97f00c838376773, type: 3}
+  m_Script: {fileID: 11500000, guid: d34ba78101d787b4ab58fdbe926f5093, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   health: 0
   target: {fileID: 1727408278}
   activateDistance: 50
   pathUpdateSeconds: 0.5
-  speed: 800
+  speed: 400
   nextWaypointDistance: 3
   jumpNodeHeightRequirement: 0.8
-  jumpModifier: 0.3
+  jumpModifier: 0.4
   jumpCheckOffset: 0.1
   followEnable: 1
   jumpEnable: 1
@@ -1478,7 +1482,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   version: 1
   data:
-    dataString: UEsDBBQAAAgIAACYn+uCS735eQIAADMFAAALACQAZ3JhcGgwLmpzb24KACAAAAAAAAEAGAAAgD7V3rGdAQCAPtXesZ0BAIA+1d6xnQFlVE1z2jAQ/SuMzoWRAySkt9YhpIckTGknF1+EtcYaZMmjjwDJ8N+7km3sUC7I7+3H26e1P4lQtobcabMygj9rDuT7iIQz+TbqySc4sp1WG/EBXcyb4K4MQSzG/GZOaMSTkGZ1Bc6I/IfayRBMEfRKFNpUS76DVFtnES6YtICU0S5kK4Q+R+SIf+P7kHLC081dOH3g6Z6OznjMQTkwfWgynSzmlNJk2mVMprN7/M2mbeI4mSRIz5JkOU6msYhXuWRVDTxM1Nea3U7mbZVkHgMVTtvG0MjlWkphW7HEnepoRspq63FUDOCC4fBRYfCiBLErXZA1TH4tCguudcaw04Mw6GFTlfzUjbEVs/tG2zuTPvRZRE1Nyef/2HES6cLo6qnrmtDQwZUi3/9mp5xZN/B9CD98le3Vgck920p4K0G96JXRXnEknfEh1Vu4eegfL4OlJeT7Hm+kXoG+7h3vrple7mp0PsfZj6kU1Tb6PmuAjdTR7bgbYPBmfqHguDm2LYFoUPHXwh+2G65YSzwKYx1S7ZQqyNtqb0IoWUbPwjTepdooiHArugbFpDutsYy7vsArbtD2inlk4WVqm7dc945cpUS4j6f0ilrrw+WybKkPz2DLV++kUNCLDsQL+pRqpZr9GnrSpW28KVg+SNt5wb+uFoHtXcHn01nBaQKLu5vxnHJGac63t4tivuWcxN0TCudkct0Ibe3BW1N9cYV71n1jRivD6rjr3LDDSnxUemC5UIXe5AZAvTYVLsLBYBN8K/mSCzRoA84JFe+bfGZE6nwPPLsUyuKky6MzLOurZKQW79oFJCNp/KhkJMCXXV4beBdwCM27Ymdy/gdQSwMEFAAACAgAAJif6x5TXIttAAAAeAAAAAkAJABtZXRhLmpzb24KACAAAAAAAAEAGAAAgD7V3rGdAQCAPtXesZ0BAIA+1d6xnQGrVipLLSrOzM9TslIw0TPSMzTXUVBKL0osyCgGihiCOKWZKSB2tFJqknlaiqmxSVqKgWGqhbmRrqlBSqKBQXJKkplFmmlSSopSLFB9SWVBql9ibipET0BiSUZaZl5KZl66nntRZoo7yGil2FoAUEsBAi0AFAAACAgAAJif64JLvfl5AgAAMwUAAAsAJAAAAAAAAAAAAAAAAAAAAGdyYXBoMC5qc29uCgAgAAAAAAABABgAAIA+1d6xnQEAgD7V3rGdAQCAPtXesZ0BUEsBAi0AFAAACAgAAJif6x5TXIttAAAAeAAAAAkAJAAAAAAAAAAAAAAAxgIAAG1ldGEuanNvbgoAIAAAAAAAAQAYAACAPtXesZ0BAIA+1d6xnQEAgD7V3rGdAVBLBQYAAAAAAgACALgAAAB+AwAAAAA=
+    dataString: UEsDBBQAAAgIAACYn+v056WLaQIAACEFAAALACQAZ3JhcGgwLmpzb24KACAAAAAAAAEAGAAAgD7V3rGdAQCAPtXesZ0BAIA+1d6xnQFlVE1T2zAQ/SsZnQsjEwyht9aE0AOQIXS4+KJY61gTWfLogyQw+e9dyXZs0lOU9/btvl2t/EWEsg0UTpuFEfxJcyA/JyScyY/JQD7Cnm20WolP6GPeBXdVCGIx5pU5oRFPgszqGpwRxS+1kSGYIuiVKLWp53wDmbbOIlwyaQEpo11QK4S+JmSPPxd3QXLA09VtOH3i6Y5OjngsQDkwQ2gyvZyllNJk2isup2knaRVeFZLVDfBgfxBe31ymnSRJY6DC1roYGrlCSyls54y4QxM7z1hjPfaFAVww7DTaCY1XIDaVCx7G4peytOC6MRh2uBcGB9ZmJb91O8Wa2W3r7YNJH+rMoqc25dN/7EUS6dLo+rGvmtBQwVWi2L6yQ8GsGw15DN9/t+3VjsktW0t4r0A964XRXnEknfFB6i1c3Q9/T41lFRTbAW+tnoG+GSbe32l/o6GHY+x9n0lRr+Pcr1tgJXWcdlwEMHgzf9BwXBPbpUA0uPhr4Y1txvvUEQ/CWIdU16UK9tbamxBK5nFmoRvvMm0URLgz3YBi0h2WmMadX+AZNyp7xjyw8HK64h3XP4gzSYSHeErPqKXenS7LVnr3BLZ68U4KBYPpQDzjnDKtVLtf45n0spU3JStGso0X/PtqEVjfljydXpecJjC7vbpIKWeUFnx9MyvTNeck7p5Q2CeTy9ZoNx68NTUkV7hn/QdlsjCsibvODdstxGetxwaFKvWqMADqpU1xcg4Gq+Cz5HMucEIrcE6oeOHkKydSF1vg+almHlud751h+ZAlJ4340C4gOcniJyQnAT4t89LAh4BdKN4nO5LjP1BLAwQUAAAICAAAmJ/rHlNci20AAAB4AAAACQAkAG1ldGEuanNvbgoAIAAAAAAAAQAYAACAPtXesZ0BAIA+1d6xnQEAgD7V3rGdAatWKkstKs7Mz1OyUjDRM9IzNNdRUEovSizIKAaKGII4pZkpIHa0UmqSeVqKqbFJWoqBYaqFuZGuqUFKooFBckqSmUWaaVJKilIsUH1JZUGqX2JuKkRPQGJJRlpmXkpmXrqee1FmijvIaKXYWgBQSwECLQAUAAAICAAAmJ/r9Oeli2kCAAAhBQAACwAkAAAAAAAAAAAAAAAAAAAAZ3JhcGgwLmpzb24KACAAAAAAAAEAGAAAgD7V3rGdAQCAPtXesZ0BAIA+1d6xnQFQSwECLQAUAAAICAAAmJ/rHlNci20AAAB4AAAACQAkAAAAAAAAAAAAAAC2AgAAbWV0YS5qc29uCgAgAAAAAAABABgAAIA+1d6xnQEAgD7V3rGdAQCAPtXesZ0BUEsFBgAAAAACAAIAuAAAAG4DAAAAAA==
     upgradeData: 
     file_cachedStartup: {fileID: 0}
     data_cachedStartup: 
@@ -1506,7 +1510,39 @@ MonoBehaviour:
     _MeshEdgeColor: {r: 0, g: 0, b: 0, a: 0.5}
     _AreaColors:
     - {r: 0, g: 0, b: 0, a: 0}
-  tagNames: []
+  tagNames:
+  - Basic Ground
+  - 1
+  - 2
+  - 3
+  - 4
+  - 5
+  - 6
+  - 7
+  - 8
+  - 9
+  - 10
+  - 11
+  - 12
+  - 13
+  - 14
+  - 15
+  - 16
+  - 17
+  - 18
+  - 19
+  - 20
+  - 21
+  - 22
+  - 23
+  - 24
+  - 25
+  - 26
+  - 27
+  - 28
+  - 29
+  - 30
+  - 31
   heuristic: 2
   heuristicScale: 1
   threadCount: 1
