@@ -16,6 +16,9 @@ public class PlayerManager : MonoBehaviour
     public Item ability2;
     public float knockback;
     public Image[] icons;
+    public int Level;
+    public int xp;
+    public int xpToLevel;
 
     // Start is called before the first frame update
     void Start()
@@ -33,6 +36,12 @@ public class PlayerManager : MonoBehaviour
         if(Input.GetAxis("Ability 2") != 0)
         {
             ability2.onUse();
+        }
+        if ( xp >= xpToLevel)
+        {
+            Debug.Log("Level up!");
+            Level++;
+            xp = 0;
         }
     }
     public void takeDamage(float damage)
