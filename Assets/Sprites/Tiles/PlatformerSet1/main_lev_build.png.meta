@@ -33,7 +33,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 1
+    filterMode: 0
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -69,7 +69,7 @@ TextureImporter:
     buildTarget: DefaultTexturePlatform
     maxTextureSize: 2048
     resizeAlgorithm: 0
-    textureFormat: -1
+    textureFormat: 4
     textureCompression: 1
     compressionQuality: 50
     crunchedCompression: 0
@@ -4462,9 +4462,9 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      main_lev_build_140: -1683286707
+      main_lev_build_27: 513595054
       main_lev_build_187: -822736570
-      main_lev_build_77: 818204000
+      main_lev_build_1: -427816073
       main_lev_build_98: 1721762247
       main_lev_build_201: -2041505052
       main_lev_build_31: 1146271693
@@ -4667,8 +4667,8 @@ TextureImporter:
       main_lev_build_18: 414131885
       main_lev_build_194: 2102699434
       main_lev_build_10: -1911795802
-      main_lev_build_1: -427816073
-      main_lev_build_27: 513595054
+      main_lev_build_77: 818204000
+      main_lev_build_140: -1683286707
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0
