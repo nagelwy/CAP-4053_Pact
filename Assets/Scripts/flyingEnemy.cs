@@ -3,40 +3,43 @@ using System.Collections.Generic;
 using UnityEngine;
 using Pathfinding;
 
-public class Enemy : MonoBehaviour
+public class flyingEnemy : MonoBehaviour
 {
     public float health;
 
     [Header("Pathfinding")]
     public Transform target;
     public float activateDistance = 50f;
-    public float pathUpdateSeconds = 0.5f;
+    public float pathUpdateSeconds = 2f;
 
     [Header("Physics")]
-    public float speed = 200f;
+    public float speed = 300f;
     public float nextWaypointDistance = 3f;
-    public float jumpNodeHeightRequirement = 0.8f;
-    public float jumpModifier = 0.3f;
-    public float jumpCheckOffset = 0.1f;
 
     [Header("Custom Behavior")]
     public bool followEnable = true;
-    public bool jumpEnable = true;
     public bool directionLookEnabled = true;
 
+    // Path variables for finding player and waypoints
     private Path path;
     private int currentWaypoint = 0;
-    bool isGrounded = false;
+    private bool pathIsEnded = false;
     Seeker seeker;
     Rigidbody2D rb;
-
+    
     // Start is called before the first frame update
-    public void Start()
+    void Start()
     {
         seeker = GetComponent<Seeker>();
         rb = GetComponent<Rigidbody2D>();
-
+        
         InvokeRepeating("UpdatePath", 0f, pathUpdateSeconds);
+
+        if(target == null)
+        {
+            Debug.LogError("Select the player");
+            return;
+        }
     }
 
     // Update is called once per frame
@@ -45,6 +48,15 @@ public class Enemy : MonoBehaviour
         if(TargetInDistance() /*&& followEnabled */)
         {
             PathFollow();
+        }
+    }
+
+    private void OnPathCompete(Path p)
+    {
+        if(!p.error)
+        {
+            path = p;
+            currentWaypoint = 0;
         }
     }
 
@@ -69,32 +81,20 @@ public class Enemy : MonoBehaviour
             return;
         }
 
-        // check if colliding
-        Vector3 startOffset = transform.position - new Vector3(0f, GetComponent<Collider2D>().bounds.extents.y + jumpCheckOffset);
-        isGrounded = Physics2D.Raycast(startOffset, -Vector3.up, 0.05f);
-
         //directions
-        Vector2 direction = ((Vector2)path.vectorPath[currentWaypoint] - rb.position).normalized;
-        Vector2 force = direction * speed * Time.deltaTime;
-
-        // Jump
-        if(jumpEnable && isGrounded)
-        {
-            if(direction.y > jumpNodeHeightRequirement)
-            {
-                rb.AddForce(Vector2.up * speed * jumpModifier);
-            }
-        }
+        Vector3 direction = (path.vectorPath[currentWaypoint] - transform.position).normalized;
+        direction *= speed * Time.fixedDeltaTime;
 
         // Movement
-        rb.AddForce(force);
+        rb.AddForce(direction);
 
         // Next point
-        float distance = Vector2.Distance(rb.position, path.vectorPath[currentWaypoint]);
+        float distance = Vector3.Distance(transform.position, path.vectorPath[currentWaypoint]);
 
         if(distance < nextWaypointDistance)
         {
             currentWaypoint++;
+            return;
         }
 
         // Graphics
@@ -113,16 +113,7 @@ public class Enemy : MonoBehaviour
 
     private bool TargetInDistance()
     {
-        return Vector2.Distance(transform.position, target.transform.position) < activateDistance;
-    }
-
-    private void OnPathCompete(Path p)
-    {
-        if(!p.error)
-        {
-            path = p;
-            currentWaypoint = 0;
-        }
+        return Vector3.Distance(transform.position, target.transform.position) < activateDistance;
     }
 
     public void Hit(float Damage)
