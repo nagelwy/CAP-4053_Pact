@@ -66,7 +66,7 @@ public class PlayerCombat : MonoBehaviour
         foreach(Collider2D enemy in hitEnemies)
         {
             //apply damage
-            enemy.gameObject.GetComponent<Enemy>().Hit(pm.Damage);
+            enemy.gameObject.GetComponent<Enemy>().Hit(pm.Damage,pm.knockback,right);
         }
     }
     void EndAttack()

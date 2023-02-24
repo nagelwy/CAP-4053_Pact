@@ -14,6 +14,7 @@ public class PlayerManager : MonoBehaviour
     public Pact pact;
     public Item ability1;
     public Item ability2;
+    public float knockback;
     public Image[] icons;
 
     // Start is called before the first frame update
