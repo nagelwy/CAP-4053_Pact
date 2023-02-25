@@ -4489,6 +4489,25 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!1 &1406349483 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6421658094993474268, guid: aa4ae81b71051f74b912383e56a5c2a7, type: 3}
+  m_PrefabInstance: {fileID: 6421658095395254839}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1406349491
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1406349483}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 54c09c880cd831d4bbdae247e9a5bf24, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 0
+  maxHealth: 10
 --- !u!1 &1429164047
 GameObject:
   m_ObjectHideFlags: 0
@@ -4582,6 +4601,7 @@ GameObject:
   - component: {fileID: 1446493195}
   - component: {fileID: 1446493194}
   - component: {fileID: 1446493193}
+  - component: {fileID: 1446493198}
   - component: {fileID: 1446493192}
   m_Layer: 7
   m_Name: FENEMY
@@ -4758,6 +4778,20 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1446493198
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1446493191}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5d721a2ededc135439177b898efeb6f1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerHealth: {fileID: 1406349491}
+  damage: 2
 --- !u!1 &1466631089
 GameObject:
   m_ObjectHideFlags: 0
@@ -5738,6 +5772,7 @@ GameObject:
   - component: {fileID: 1776416377}
   - component: {fileID: 1776416380}
   - component: {fileID: 1776416381}
+  - component: {fileID: 1776416383}
   - component: {fileID: 1776416382}
   m_Layer: 7
   m_Name: GENEMY
@@ -5914,6 +5949,20 @@ MonoBehaviour:
   tagPenalties: 0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
   graphMask:
     value: 2
+--- !u!114 &1776416383
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1776416375}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5d721a2ededc135439177b898efeb6f1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerHealth: {fileID: 1406349491}
+  damage: 2
 --- !u!1 &1785932439
 GameObject:
   m_ObjectHideFlags: 0
@@ -6640,6 +6689,10 @@ PrefabInstance:
       objectReference: {fileID: 1955312059}
     - target: {fileID: 6421658094993474268, guid: aa4ae81b71051f74b912383e56a5c2a7, type: 3}
       propertyPath: m_Name
+      value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 6421658094993474268, guid: aa4ae81b71051f74b912383e56a5c2a7, type: 3}
+      propertyPath: m_TagString
       value: Player
       objectReference: {fileID: 0}
     - target: {fileID: 6421658096345807367, guid: aa4ae81b71051f74b912383e56a5c2a7, type: 3}
