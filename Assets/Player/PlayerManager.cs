@@ -5,11 +5,15 @@ using UnityEngine.UI;
 
 public class PlayerManager : MonoBehaviour
 {
-    public float MaxHealth;
+    public PlayerCombat playerCombat;
+    public PlayerMovement playerMovement;
+    public float MaxHealth = 10;
     public float currentHealth;
     public float MoveSpeed;
     public float AttackTime;
     public float Damage;
+    public float time;
+    private Rigidbody2D rb;
     public float CDR;
     public Pact pact;
     public Item ability1;
@@ -23,7 +27,10 @@ public class PlayerManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        playerMovement = gameObject.GetComponent<PlayerMovement>();
+        rb = gameObject.GetComponent<Rigidbody2D>();
+
+        currentHealth = MaxHealth;
     }
 
     // Update is called once per frame
@@ -44,13 +51,37 @@ public class PlayerManager : MonoBehaviour
             xp = 0;
         }
     }
-    public void TakeDamage(int amount)
+    public void TakeDamage(int amount, int knockback, bool right)
     {
         currentHealth -= amount;
 
-        if(currentHealth <= 0)
-            Destroy(gameObject);
+        playerMovement.onHit = true;
+
+        StartCoroutine(OnHitDelay(time));
+
+        if(right)
+        {
+            rb.AddForce(new Vector2(-knockback, knockback / 2));
+        }
+        else
+        {
+            rb.AddForce(new Vector2(knockback, knockback / 2));
+            
+        }
+        if(currentHealth <=0)
+        {
+            //die
+            Debug.Log(gameObject.name +" is Dead!");
+            
+        }
     }
+
+    private IEnumerator OnHitDelay(float time)
+    {
+        yield return new WaitForSeconds(time);
+        playerMovement.onHit = false;
+    }
+
     public void UpdateIcons()
     {
         icons[0].sprite = pact.getIcon();

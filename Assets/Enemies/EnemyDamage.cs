@@ -4,12 +4,14 @@ using UnityEngine;
 
 public class EnemyDamage : MonoBehaviour
 {
-    public PlayerManager playerHealth;
+    public PlayerManager playerManager;
     public int damage = 2;
+    public int knockback;
+
     // Start is called before the first frame update
     void Start()
     {
-        
+        playerManager = GameObject.Find("Player").GetComponent<PlayerManager>();
     }
 
     // Update is called once per frame
@@ -21,6 +23,6 @@ public class EnemyDamage : MonoBehaviour
     private void OnCollisionEnter2D(Collision2D collision) 
     {
         if(collision.gameObject.tag == "Player")
-            playerHealth.TakeDamage(damage);
+            playerManager.TakeDamage(damage, knockback, gameObject.transform.position.x >= playerManager.gameObject.transform.position.x);
     }
 }

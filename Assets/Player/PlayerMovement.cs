@@ -28,6 +28,7 @@ public class PlayerMovement : MonoBehaviour
     public float gravity;
     private bool hasDoubleJump;
     private bool isJumping;
+    public bool onHit;
     private SoundController sc;
     private PlayerManager pm;
     public bool attacking;
@@ -43,7 +44,7 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(isDashing)
+        if(isDashing || onHit)
         {
             return;
         }
