@@ -7,6 +7,7 @@ public class PlayerManager : MonoBehaviour
 {
     public PlayerCombat playerCombat;
     public PlayerMovement playerMovement;
+    public SoundController sc;
     public float MaxHealth = 10;
     public float currentHealth;
     public float MoveSpeed;
@@ -29,6 +30,7 @@ public class PlayerManager : MonoBehaviour
     {
         playerMovement = gameObject.GetComponent<PlayerMovement>();
         rb = gameObject.GetComponent<Rigidbody2D>();
+        sc = GameObject.Find("SoundManager").GetComponent<SoundController>();
 
         currentHealth = MaxHealth;
     }
@@ -57,6 +59,7 @@ public class PlayerManager : MonoBehaviour
 
         playerMovement.onHit = true;
 
+        StartCoroutine(ColorChange());
         StartCoroutine(OnHitDelay(time));
 
         if(right)
@@ -75,7 +78,13 @@ public class PlayerManager : MonoBehaviour
             
         }
     }
-
+    private IEnumerator ColorChange()
+    {
+        sc.PlaySound(1);
+        gameObject.GetComponent<SpriteRenderer>().color = Color.red;
+        yield return new WaitForSeconds(0.1f);
+        gameObject.GetComponent<SpriteRenderer>().color = Color.white;
+    }
     private IEnumerator OnHitDelay(float time)
     {
         yield return new WaitForSeconds(time);
