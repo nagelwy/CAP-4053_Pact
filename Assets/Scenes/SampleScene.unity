@@ -4489,25 +4489,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
---- !u!1 &1406349483 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 6421658094993474268, guid: aa4ae81b71051f74b912383e56a5c2a7, type: 3}
-  m_PrefabInstance: {fileID: 6421658095395254839}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1406349491
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1406349483}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 54c09c880cd831d4bbdae247e9a5bf24, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  health: 0
-  maxHealth: 10
 --- !u!1 &1429164047
 GameObject:
   m_ObjectHideFlags: 0
@@ -4790,9 +4771,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5d721a2ededc135439177b898efeb6f1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerManager: {fileID: 0}
+  playerHealth: {fileID: 0}
   damage: 2
-  knockback: 450
 --- !u!1 &1466631089
 GameObject:
   m_ObjectHideFlags: 0
@@ -5962,9 +5942,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5d721a2ededc135439177b898efeb6f1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerManager: {fileID: 0}
+  playerHealth: {fileID: 0}
   damage: 2
-  knockback: 450
 --- !u!1 &1785932439
 GameObject:
   m_ObjectHideFlags: 0
@@ -6660,10 +6639,6 @@ PrefabInstance:
     - target: {fileID: 6421658094993474245, guid: aa4ae81b71051f74b912383e56a5c2a7, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6421658094993474267, guid: aa4ae81b71051f74b912383e56a5c2a7, type: 3}
-      propertyPath: time
-      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 6421658094993474267, guid: aa4ae81b71051f74b912383e56a5c2a7, type: 3}
       propertyPath: MoveSpeed

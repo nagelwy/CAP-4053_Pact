@@ -69,6 +69,7 @@ public class PlayerMovement : MonoBehaviour
         if (Input.GetAxis("Jump")!= 0 && grounded && !isJumping)
         {
             rb.velocity = new Vector2(rb.velocity.x, jumpPower);
+            anim.SetTrigger("Jump");
             sc.PlaySound(0);
             isJumping = true;
         }
@@ -81,6 +82,7 @@ public class PlayerMovement : MonoBehaviour
         if(!grounded && hasDoubleJump && !isJumping && Input.GetAxis("Jump") != 0)
         {
             rb.velocity = new Vector2(rb.velocity.x, jumpPower);
+            anim.SetTrigger("Jump");
             sc.PlaySound(0);
             hasDoubleJump = false;
         }
