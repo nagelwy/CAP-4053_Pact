@@ -44,9 +44,12 @@ public class PlayerManager : MonoBehaviour
             xp = 0;
         }
     }
-    public void takeDamage(float damage)
+    public void TakeDamage(int amount)
     {
-        currentHealth -= damage;
+        currentHealth -= amount;
+
+        if(currentHealth <= 0)
+            Destroy(gameObject);
     }
     public void UpdateIcons()
     {
