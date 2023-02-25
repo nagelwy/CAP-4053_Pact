@@ -3681,7 +3681,7 @@ GameObject:
   - component: {fileID: 997867802}
   - component: {fileID: 997867805}
   - component: {fileID: 997867804}
-  - component: {fileID: 997867803}
+  - component: {fileID: 997867806}
   m_Layer: 5
   m_Name: Choice 2
   m_TagString: Untagged
@@ -3712,27 +3712,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 300, y: 300}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &997867803
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 997867801}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 27498618ec9c7154c92ecb5ece2a7bb2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  PactSelect: {fileID: 1558717455}
-  Title: {fileID: 438066945}
-  Desc: {fileID: 277444433}
-  button: {fileID: 1305214873}
-  titleString: Glass Bones
-  descString: Bones become glass health / 4
-  healthDivide: 4
-  damageMult: 1
-  icon: {fileID: 21300000, guid: b5aba9662c3fc0f4d942101f5557d50c, type: 3}
 --- !u!114 &997867804
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3771,6 +3750,27 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 997867801}
   m_CullTransparentMesh: 1
+--- !u!114 &997867806
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 997867801}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c0ead53a44a9ee24ea18dce40255dcef, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  PactSelect: {fileID: 1558717455}
+  Title: {fileID: 438066945}
+  Desc: {fileID: 277444433}
+  button: {fileID: 1305214873}
+  titleString: Gentle Giant
+  descString: Gain increased health at the cost of damage
+  healthDivide: 0
+  damageMult: 0
+  icon: {fileID: 0}
 --- !u!1 &1090107153
 GameObject:
   m_ObjectHideFlags: 0
@@ -4179,7 +4179,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 997867803}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: GlassCannon, Assembly-CSharp
         m_MethodName: UpdateStats
         m_Mode: 1
