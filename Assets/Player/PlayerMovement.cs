@@ -88,7 +88,12 @@ public class PlayerMovement : MonoBehaviour
         }
         if(grounded)
         {
+            anim.SetBool("InAir", false);
             hasDoubleJump = true;
+        }
+        else
+        {
+            anim.SetBool("InAir", true);
         }
 
         // DASHING
