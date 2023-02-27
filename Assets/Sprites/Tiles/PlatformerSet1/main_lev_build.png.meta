@@ -1804,7 +1804,7 @@ TextureImporter:
         width: 64
         height: 64
       alignment: 9
-      pivot: {x: 0.25, y: 0.5}
+      pivot: {x: 0.25, y: 0.25}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -1824,8 +1824,8 @@ TextureImporter:
         y: 800
         width: 160
         height: 32
-      alignment: 9
-      pivot: {x: 0.5, y: 0}
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -1846,7 +1846,7 @@ TextureImporter:
         width: 64
         height: 64
       alignment: 9
-      pivot: {x: 0.75, y: 0.5}
+      pivot: {x: 0.75, y: 0.25}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -2517,8 +2517,8 @@ TextureImporter:
         y: 576
         width: 32
         height: 128
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      alignment: 9
+      pivot: {x: 0.5, y: 0.375}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -2538,8 +2538,8 @@ TextureImporter:
         y: 656
         width: 64
         height: 32
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      alignment: 9
+      pivot: {x: 0.25, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -2601,8 +2601,8 @@ TextureImporter:
         y: 656
         width: 64
         height: 32
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      alignment: 9
+      pivot: {x: 0.75, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -2618,12 +2618,12 @@ TextureImporter:
       name: main_lev_build_118
       rect:
         serializedVersion: 2
-        x: 512
+        x: 511
         y: 576
         width: 32
         height: 128
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      alignment: 9
+      pivot: {x: 0.5, y: 0.375}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -2832,8 +2832,8 @@ TextureImporter:
         y: 528
         width: 32
         height: 64
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape:
@@ -2920,15 +2920,16 @@ TextureImporter:
         y: 528
         width: 32
         height: 64
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape:
-      - - {x: -16, y: 32}
+      - - {x: 16, y: 0}
+        - {x: -16, y: 32}
         - {x: -16, y: -32}
         - {x: 16, y: -32}
-        - {x: 16, y: -2}
+        - {x: 16, y: 0}
       tessellationDetail: 0
       bones: []
       spriteID: 687ca95b8153c3d4dbde49580f8d3ecf
@@ -4526,9 +4527,9 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      main_lev_build_27: 513595054
+      main_lev_build_140: -1683286707
       main_lev_build_187: -822736570
-      main_lev_build_1: -427816073
+      main_lev_build_77: 818204000
       main_lev_build_98: 1721762247
       main_lev_build_201: -2041505052
       main_lev_build_31: 1146271693
@@ -4732,8 +4733,8 @@ TextureImporter:
       main_lev_build_18: 414131885
       main_lev_build_194: 2102699434
       main_lev_build_10: -1911795802
-      main_lev_build_77: 818204000
-      main_lev_build_140: -1683286707
+      main_lev_build_1: -427816073
+      main_lev_build_27: 513595054
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0
