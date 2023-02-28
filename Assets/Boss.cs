@@ -12,6 +12,7 @@ public class Boss : MonoBehaviour
     public int knockback;
     public bool isFlipped = false;
     GameObject target;
+    public bool disableBox;
 
 
     // Start is called before the first frame update
@@ -54,8 +55,11 @@ public class Boss : MonoBehaviour
     }
     private void OnCollisionEnter2D(Collision2D collision) 
     {
-        if(collision.gameObject.tag == "Player")
+        if(!disableBox)
+        {
+            if(collision.gameObject.tag == "Player")
             target.gameObject.GetComponent<PlayerManager>().TakeDamage(damage, knockback, gameObject.transform.position.x >= target.gameObject.GetComponent<PlayerManager>().gameObject.transform.position.x);
+        }
     }
 
     public void LookAtPlayer()

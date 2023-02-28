@@ -2,39 +2,33 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MinoIdle : StateMachineBehaviour
+public class MinoChargeL : StateMachineBehaviour
 {
-    public float idleTime;
-    private float time;
+    public float accelSpeed;
     Rigidbody2D rb;
+    public float maxVelocityBase;
     Boss boss;
+    float maxVelocity;
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        time = idleTime;
         rb = animator.GetComponent<Rigidbody2D>();
+        animator.transform.localScale = new Vector3(1,1,1);
         boss = animator.GetComponent<Boss>();
+        maxVelocity = maxVelocityBase/boss.currentHealth;
+        accelSpeed += 1f;
+        boss.disableBox = true;
     }
 
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        rb.velocity = new Vector2(0,rb.velocity.y);
-        if(boss.currentHealth <= boss.MaxHealth/2)
+        if(-rb.velocity.x < maxVelocity)
         {
-            animator.SetTrigger("Enrage");
+            Debug.Log("is this thing on?");
+            rb.AddForce(new Vector2(-accelSpeed,0));
         }
-        if(time <= 0)
-        {
-            animator.SetTrigger("IdleExit");
-        }
-        else
-        {
-            time-= Time.deltaTime;
-        }
-
     }
-    
 
     // OnStateExit is called when a transition ends and the state machine finishes evaluating this state
     //override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)

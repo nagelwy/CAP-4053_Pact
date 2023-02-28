@@ -2,39 +2,31 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MinoIdle : StateMachineBehaviour
+public class MinoStun : StateMachineBehaviour
 {
-    public float idleTime;
-    private float time;
-    Rigidbody2D rb;
+    public float StunTime;
+    float timer;
     Boss boss;
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        time = idleTime;
-        rb = animator.GetComponent<Rigidbody2D>();
+        timer = StunTime;
         boss = animator.GetComponent<Boss>();
+        boss.disableBox = false;
     }
 
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        rb.velocity = new Vector2(0,rb.velocity.y);
-        if(boss.currentHealth <= boss.MaxHealth/2)
+        if(timer <= 0)
         {
-            animator.SetTrigger("Enrage");
-        }
-        if(time <= 0)
-        {
-            animator.SetTrigger("IdleExit");
+            animator.SetBool("Stunned",false);
         }
         else
         {
-            time-= Time.deltaTime;
+            timer -= Time.deltaTime;
         }
-
     }
-    
 
     // OnStateExit is called when a transition ends and the state machine finishes evaluating this state
     //override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)

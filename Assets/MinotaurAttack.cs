@@ -13,6 +13,7 @@ public class MinotaurAttack : MonoBehaviour
     public Vector3 attackOffset;
     public float radius;
     public LayerMask Player;
+    public LayerMask wall;
 
     void Start()
     {
@@ -41,6 +42,13 @@ public class MinotaurAttack : MonoBehaviour
         if(colInfo != null)
         {
             pm.BossDamage(damage, knockbackX, knockbackY, gameObject.transform.position.x >= pm.gameObject.transform.position.x);
+        }
+    }
+    private void OnCollisionEnter2D(Collision2D collision) 
+    {
+        if(collision.gameObject.tag == "Wall")
+        {
+            gameObject.GetComponent<Animator>().SetBool("Stunned",true);
         }
     }
 }
