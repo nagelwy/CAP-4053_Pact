@@ -10,7 +10,7 @@ public class MinotaurAttack : MonoBehaviour
     public int damage;
     public float knockbackX;
     public float knockbackY;
-    public GameObject attackPoint;
+    public Vector3 attackOffset;
     public float radius;
     public LayerMask Player;
 
@@ -27,8 +27,17 @@ public class MinotaurAttack : MonoBehaviour
     }
     void Attack()
     {
-        
-        Collider2D[] colInfo = Physics2D.OverlapCircleAll(attackPoint.transform.position, radius, Player);
+        Vector3 pos = transform.position;
+        if(boss.isFlipped)
+        {
+            pos += transform.right * attackOffset.x;
+        }
+        else
+        {
+            pos += transform.right * -attackOffset.x;
+        }
+        pos += transform.up * attackOffset.y;
+        Collider2D colInfo = Physics2D.OverlapCircle(pos, radius, Player);
         if(colInfo != null)
         {
             pm.BossDamage(damage, knockbackX, knockbackY, gameObject.transform.position.x >= pm.gameObject.transform.position.x);

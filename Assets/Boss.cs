@@ -8,6 +8,9 @@ public class Boss : MonoBehaviour
     public float MaxHealth;
     public int Xp;
     SoundController sc;
+    public int damage;
+    public int knockback;
+    public bool isFlipped = false;
     GameObject target;
 
 
@@ -48,5 +51,29 @@ public class Boss : MonoBehaviour
         target.gameObject.GetComponent<PlayerManager>().xp += Xp;
         //Die Animation
         gameObject.SetActive(false); // fix this to fully despawn enemy.
+    }
+    private void OnCollisionEnter2D(Collision2D collision) 
+    {
+        if(collision.gameObject.tag == "Player")
+            target.gameObject.GetComponent<PlayerManager>().TakeDamage(damage, knockback, gameObject.transform.position.x >= target.gameObject.GetComponent<PlayerManager>().gameObject.transform.position.x);
+    }
+
+    public void LookAtPlayer()
+    {
+        Vector3 flipped = transform.localScale;
+        flipped.z *= -1f;
+
+        if(transform.position.x > target.transform.position.x && isFlipped)
+        {
+            transform.localScale = flipped;
+            transform.Rotate(0f,180f,0f);
+            isFlipped = false;
+        }
+        else if(transform.position.x < target.transform.position.x && !isFlipped)
+        {
+            transform.localScale = flipped;
+            transform.Rotate(0f,180f,0f);
+            isFlipped = true;
+        }
     }
 }
