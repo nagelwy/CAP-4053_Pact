@@ -78,6 +78,31 @@ public class PlayerManager : MonoBehaviour
             
         }
     }
+    public void BossDamage(int amount, float knockbackX, float knockbackY, bool right)
+    {
+        currentHealth -= amount;
+
+        playerMovement.onHit = true;
+
+        StartCoroutine(ColorChange());
+        StartCoroutine(OnHitDelay(time));
+
+        if(right)
+        {
+            rb.AddForce(new Vector2(-knockbackX, knockbackY));
+        }
+        else
+        {
+            rb.AddForce(new Vector2(knockbackX, knockbackY));
+            
+        }
+        if(currentHealth <=0)
+        {
+            //die
+            Debug.Log(gameObject.name +" is Dead!");
+            
+        }
+    }
     private IEnumerator ColorChange()
     {
         sc.PlaySound(1);

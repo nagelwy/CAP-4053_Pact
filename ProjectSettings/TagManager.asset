@@ -15,8 +15,8 @@ TagManager:
   - Entities
   - Enemy
   - Walls
-  - 
-  - 
+  - Boss
+  - Player
   - 
   - 
   - 
