@@ -6,6 +6,8 @@ public class SelectionManager : MonoBehaviour
 {
     public GameObject ItemSelect;
     public GameObject PactSelect;
+    public GameObject Bar;
+
     public int phaseCounter = 0;
     private PlayerManager pm;
     public GameObject icons;
@@ -33,6 +35,7 @@ public class SelectionManager : MonoBehaviour
             PactSelect.SetActive(false);
             icons.SetActive(true);
             pm.UpdateIcons();
+            Bar.SetActive(true);
         }
     }
 
