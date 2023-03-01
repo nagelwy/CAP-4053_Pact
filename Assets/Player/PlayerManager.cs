@@ -25,6 +25,9 @@ public class PlayerManager : MonoBehaviour
     public int xp;
     public int xpToLevel;
 
+    public HealthBar healthBar;
+    public XPBar xpBar;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -33,6 +36,7 @@ public class PlayerManager : MonoBehaviour
         sc = GameObject.Find("SoundManager").GetComponent<SoundController>();
 
         currentHealth = MaxHealth;
+        healthBar.setMaxHealth(MaxHealth);
     }
 
     // Update is called once per frame
@@ -56,6 +60,7 @@ public class PlayerManager : MonoBehaviour
     public void TakeDamage(int amount, int knockback, bool right)
     {
         currentHealth -= amount;
+        healthBar.setHealth(currentHealth);
 
         playerMovement.onHit = true;
 
@@ -77,6 +82,10 @@ public class PlayerManager : MonoBehaviour
             Debug.Log(gameObject.name +" is Dead!");
             
         }
+    }
+    public void gainXP(float xp)
+    {
+        xpBar.setXP(xp);
     }
     public void BossDamage(int amount, float knockbackX, float knockbackY, bool right)
     {
