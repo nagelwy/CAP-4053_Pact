@@ -4817,7 +4817,7 @@ MonoBehaviour:
   currentHealth: 0
   enemyxp: 5
   target: {fileID: 940749042}
-  activateDistance: 5e+9
+  activateDistance: 10000
   pathUpdateSeconds: 0.5
   speed: 500
   nextWaypointDistance: 3
@@ -4934,7 +4934,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1446493191}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 212.9, y: 6.7, z: 0}
+  m_LocalPosition: {x: 207.68, y: 8.86, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -6689,7 +6689,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1776416375}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 209.63, y: 6.7, z: 0}
+  m_LocalPosition: {x: 214.54, y: 3.17, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -6733,7 +6733,7 @@ MonoBehaviour:
   currentHealth: 0
   enemyxp: 5
   target: {fileID: 940749042}
-  activateDistance: 5e+9
+  activateDistance: 10000
   pathUpdateSeconds: 0.3
   speed: 500
   nextWaypointDistance: 3
@@ -7460,11 +7460,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6421658094993474245, guid: aa4ae81b71051f74b912383e56a5c2a7, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 259.87
+      value: 143.19
       objectReference: {fileID: 0}
     - target: {fileID: 6421658094993474245, guid: aa4ae81b71051f74b912383e56a5c2a7, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -2.5
+      value: -2.63
       objectReference: {fileID: 0}
     - target: {fileID: 6421658094993474245, guid: aa4ae81b71051f74b912383e56a5c2a7, type: 3}
       propertyPath: m_LocalPosition.z
