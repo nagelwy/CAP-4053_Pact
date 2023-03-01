@@ -1606,10 +1606,10 @@ RectTransform:
   m_Father: {fileID: 1763587668}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 37.5, y: -50}
-  m_SizeDelta: {x: 75, y: 75}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &457954013
 MonoBehaviour:
@@ -4817,7 +4817,7 @@ MonoBehaviour:
   currentHealth: 0
   enemyxp: 5
   target: {fileID: 940749042}
-  activateDistance: 5e+9
+  activateDistance: 10000
   pathUpdateSeconds: 0.5
   speed: 500
   nextWaypointDistance: 3
@@ -4934,7 +4934,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1446493191}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 212.9, y: 6.7, z: 0}
+  m_LocalPosition: {x: 207.68, y: 8.86, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -4995,10 +4995,10 @@ RectTransform:
   m_Father: {fileID: 1763587668}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 122.5, y: -50}
-  m_SizeDelta: {x: 75, y: 75}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1466631091
 MonoBehaviour:
@@ -6074,10 +6074,10 @@ RectTransform:
   m_Father: {fileID: 1763587668}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 207.5, y: -50}
-  m_SizeDelta: {x: 75, y: 75}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1616945488
 MonoBehaviour:
@@ -6465,7 +6465,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1763587668
 RectTransform:
   m_ObjectHideFlags: 0
@@ -6689,7 +6689,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1776416375}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 209.63, y: 6.7, z: 0}
+  m_LocalPosition: {x: 214.54, y: 3.17, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -6733,7 +6733,7 @@ MonoBehaviour:
   currentHealth: 0
   enemyxp: 5
   target: {fileID: 940749042}
-  activateDistance: 5e+9
+  activateDistance: 10000
   pathUpdateSeconds: 0.3
   speed: 500
   nextWaypointDistance: 3
@@ -7460,11 +7460,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6421658094993474245, guid: aa4ae81b71051f74b912383e56a5c2a7, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 259.87
+      value: 143.19
       objectReference: {fileID: 0}
     - target: {fileID: 6421658094993474245, guid: aa4ae81b71051f74b912383e56a5c2a7, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -2.5
+      value: -2.63
       objectReference: {fileID: 0}
     - target: {fileID: 6421658094993474245, guid: aa4ae81b71051f74b912383e56a5c2a7, type: 3}
       propertyPath: m_LocalPosition.z
