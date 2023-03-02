@@ -127,6 +127,7 @@ public class PlayerManager : MonoBehaviour
 
     public void UpdateIcons()
     {
+        healthBar.setMaxHealth(MaxHealth);
         icons[0].sprite = pact.getIcon();
         icons[1].sprite = ability1.getIcon();
         icons[2].sprite = ability2.getIcon();
