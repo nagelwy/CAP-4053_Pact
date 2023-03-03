@@ -9,6 +9,7 @@ public class HornOfTheMinotaur : MonoBehaviour, Item
     public Text Title;
     public Text Desc;
     public Button button;
+    public Image image;
     public string titleString;
     public string descString;
     private PlayerManager pm;
@@ -25,6 +26,7 @@ public class HornOfTheMinotaur : MonoBehaviour, Item
     {
         Title.text = titleString;
         Desc.text = descString;
+        image.sprite = icon;
     }
     public void UpdateStats()
     {

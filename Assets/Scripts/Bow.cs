@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class BigAttack : MonoBehaviour, Item
+public class Bow : MonoBehaviour, Item
 {
     public GameObject ItemSelect;
     public Text Title;
@@ -30,7 +30,7 @@ public class BigAttack : MonoBehaviour, Item
     }
     public void UpdateStats()
     {
-        if (sm.phaseCounter == 0)
+        if(sm.phaseCounter == 0)
         {
             pm = GameObject.Find("Player").GetComponent<PlayerManager>();
             pm.ability1 = this;
@@ -43,7 +43,15 @@ public class BigAttack : MonoBehaviour, Item
     }
     public void onUse()
     {
-        Debug.Log("BigAttack");
+        Debug.Log("This ability has been used");
+        if(pm.gameObject.GetComponent<PlayerMovement>().facingRight)
+        {
+            pm.gameObject.GetComponent<Rigidbody2D>().AddForce(new Vector2(250f,0));
+        }
+        else
+        {
+            pm.gameObject.GetComponent<Rigidbody2D>().AddForce(new Vector2(-250f,0));
+        }
     }
     public Sprite getIcon()
     {

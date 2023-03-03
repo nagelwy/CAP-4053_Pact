@@ -17,6 +17,10 @@ public interface Item
     {
 
     }
+    public void UpdateStats()
+    {
+        
+    }
     public Sprite getIcon()
     {
         return null;
