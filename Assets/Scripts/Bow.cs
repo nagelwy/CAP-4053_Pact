@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class BigAttack : MonoBehaviour, Item
+public class Bow : MonoBehaviour, Item
 {
     public GameObject ItemSelect;
     public Text Title;
@@ -14,12 +14,8 @@ public class BigAttack : MonoBehaviour, Item
     public string descString;
     private PlayerManager pm;
     private SelectionManager sm;
-    public LayerMask enemyLayers;
-    public LayerMask bossLayers;
     public Sprite icon;
     public float CD;
-    public float damageMult;
-    public float knockbackMult;
 
     void Start()
     {
@@ -35,7 +31,7 @@ public class BigAttack : MonoBehaviour, Item
     }
     public void UpdateStats()
     {
-        if (sm.phaseCounter == 0)
+        if(sm.phaseCounter == 0)
         {
             pm = GameObject.Find("Player").GetComponent<PlayerManager>();
             pm.ability1 = this;
@@ -48,19 +44,14 @@ public class BigAttack : MonoBehaviour, Item
     }
     public void onUse()
     {
-        Debug.Log("BigAttack");
-        PlayerCombat playerc = GameObject.Find("Player").GetComponent<PlayerCombat>();
-        playerc.gameObject.GetComponent<PlayerMovement>().attacking = true;
-        playerc.gameObject.GetComponent<Animator>().SetBool("Attack", true);
-        Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(playerc.attackPoint.position,1.5f,enemyLayers);
-        Collider2D[] hitBoss = Physics2D.OverlapCircleAll(playerc.attackPoint.position,1.5f,bossLayers);
-        foreach(Collider2D enemy in hitEnemies)
+        Debug.Log("This ability has been used");
+        if(pm.gameObject.GetComponent<PlayerMovement>().facingRight)
         {
-            enemy.gameObject.GetComponent<Enemy>().Hit(pm.Damage*damageMult,pm.knockback*knockbackMult,pm.gameObject.GetComponent<PlayerMovement>().facingRight);
+            pm.gameObject.GetComponent<Rigidbody2D>().AddForce(new Vector2(250f,0));
         }
-        foreach(Collider2D boss in hitBoss)
+        else
         {
-            boss.gameObject.GetComponent<Boss>().Hit(pm.Damage*damageMult);
+            pm.gameObject.GetComponent<Rigidbody2D>().AddForce(new Vector2(-250f,0));
         }
     }
     public Sprite getIcon()

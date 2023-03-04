@@ -1,0 +1,24 @@
+fileFormatVersion: 2
+guid: cabd069e002ca8843a2a888abf89ad47
+TrueTypeFontImporter:
+  externalObjects: {}
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontNames:
+  - California sun
+  fallbackFontReferences:
+  - {fileID: 12800000, guid: d8410d4e2901c9d42a2c1c5db04d7afd, type: 3}
+  - {fileID: 12800000, guid: fb8949db9390de048a1d8f936d43fce6, type: 3}
+  - {fileID: 12800000, guid: fec94530baf70d94890a1b290bb29615, type: 3}
+  customCharacters: 
+  fontRenderingMode: 3
+  ascentCalculationMode: 1
+  useLegacyBoundsCalculation: 0
+  shouldRoundAdvanceValue: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
