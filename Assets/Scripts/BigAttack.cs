@@ -14,8 +14,12 @@ public class BigAttack : MonoBehaviour, Item
     public string descString;
     private PlayerManager pm;
     private SelectionManager sm;
+    public LayerMask enemyLayers;
+    public LayerMask bossLayers;
     public Sprite icon;
     public float CD;
+    public float damageMult;
+    public float knockbackMult;
 
     void Start()
     {
@@ -45,6 +49,19 @@ public class BigAttack : MonoBehaviour, Item
     public void onUse()
     {
         Debug.Log("BigAttack");
+        PlayerCombat playerc = GameObject.Find("Player").GetComponent<PlayerCombat>();
+        playerc.gameObject.GetComponent<PlayerMovement>().attacking = true;
+        playerc.gameObject.GetComponent<Animator>().SetBool("Attack", true);
+        Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(playerc.attackPoint.position,1.5f,enemyLayers);
+        Collider2D[] hitBoss = Physics2D.OverlapCircleAll(playerc.attackPoint.position,1.5f,bossLayers);
+        foreach(Collider2D enemy in hitEnemies)
+        {
+            enemy.gameObject.GetComponent<Enemy>().Hit(pm.Damage*damageMult,pm.knockback*knockbackMult,pm.gameObject.GetComponent<PlayerMovement>().facingRight);
+        }
+        foreach(Collider2D boss in hitBoss)
+        {
+            boss.gameObject.GetComponent<Boss>().Hit(pm.Damage*damageMult);
+        }
     }
     public Sprite getIcon()
     {

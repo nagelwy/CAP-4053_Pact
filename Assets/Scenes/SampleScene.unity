@@ -5297,8 +5297,16 @@ MonoBehaviour:
   image: {fileID: 851873413}
   titleString: Big Attack
   descString: This does a very big attack with a large crit!
+  enemyLayers:
+    serializedVersion: 2
+    m_Bits: 128
+  bossLayers:
+    serializedVersion: 2
+    m_Bits: 512
   icon: {fileID: 21300000, guid: fa0cb05d87d658147a2fdc6f50f5bf4e, type: 3}
   CD: 5
+  damageMult: 2
+  knockbackMult: 2
 --- !u!4 &1150337044
 Transform:
   m_ObjectHideFlags: 0

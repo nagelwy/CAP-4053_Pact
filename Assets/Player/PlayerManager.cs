@@ -164,13 +164,16 @@ public class PlayerManager : MonoBehaviour
     }
     private void OnCollisionEnter2D(Collision2D collision) 
     {
-        if(collision.gameObject.tag == "Enemy")
+        if(charging)
         {
-            collision.gameObject.GetComponent<Enemy>().Hit(Mathf.Abs(rb.velocity.x)/3,knockback*2,playerMovement.facingRight);
-        }
-        if(collision.gameObject.tag == "Boss")
-        {
-            collision.gameObject.GetComponent<Boss>().Hit(Mathf.Abs(rb.velocity.x)/3);
+            if(collision.gameObject.tag == "Enemy")
+            {
+                collision.gameObject.GetComponent<Enemy>().Hit(Mathf.Abs(rb.velocity.x)/3,knockback*2,playerMovement.facingRight);
+            }
+            if(collision.gameObject.tag == "Boss")
+            {
+                collision.gameObject.GetComponent<Boss>().Hit(Mathf.Abs(rb.velocity.x)/3);
+            }
         }
     }
 }
