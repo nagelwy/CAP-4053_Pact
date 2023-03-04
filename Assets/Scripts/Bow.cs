@@ -15,6 +15,7 @@ public class Bow : MonoBehaviour, Item
     private PlayerManager pm;
     private SelectionManager sm;
     public Sprite icon;
+    public float CD;
 
     void Start()
     {
@@ -56,5 +57,9 @@ public class Bow : MonoBehaviour, Item
     public Sprite getIcon()
     {
         return icon;
+    }
+    public float getCD()
+    {
+        return CD;
     }
 }

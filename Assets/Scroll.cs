@@ -4,15 +4,15 @@ using UnityEngine;
 
 public class Scroll : MonoBehaviour
 {
+    public int index;
+    ItemManager im;
     SelectionManager gsm;
-    Item i;
 
     // Start is called before the first frame update
     void Start()
     {
         gsm = GameObject.Find("GameStartManager").GetComponent<SelectionManager>();
-        i = gameObject.GetComponentInParent<Item>();
-        Debug.Log(i);
+        im = GameObject.Find("ItemManager").GetComponent<ItemManager>();
     }
 
     public void OnClick()
@@ -22,7 +22,7 @@ public class Scroll : MonoBehaviour
     }
     public void endScroll()
     {
-        i.UpdateStats();
+        im.updateStat(index);
         gsm.onClick();
 
     }

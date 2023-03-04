@@ -27,6 +27,11 @@ public class PlayerManager : MonoBehaviour
 
     public HealthBar healthBar;
     public XPBar xpBar;
+    public bool charging;
+    public float Ability1CD;
+    public float ab1t;
+    public float Ability2CD;
+    public float ab2t;
 
     // Start is called before the first frame update
     void Start()
@@ -42,14 +47,33 @@ public class PlayerManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(Input.GetAxis("Ability 1") != 0)
+        if(ab1t > Ability1CD)
         {
-            ability1.onUse();
+            if(Input.GetAxis("Ability 1") != 0)
+            {
+                ability1.onUse();
+                Ability1CD = ability1.getCD();
+                ab1t = 0;
+            }
         }
-        if(Input.GetAxis("Ability 2") != 0)
+        else
         {
-            ability2.onUse();
+            ab1t += Time.deltaTime;
         }
+        if(ab2t > Ability2CD)
+        {
+            if(Input.GetAxis("Ability 2") != 0)
+            {
+                ability2.onUse();
+                Ability2CD = ability2.getCD();
+                ab2t = 0;
+            }
+        }
+        else
+        {
+            ab2t += Time.deltaTime;
+        }
+
         if ( xp >= xpToLevel)
         {
             Debug.Log("Level up!");
@@ -59,28 +83,31 @@ public class PlayerManager : MonoBehaviour
     }
     public void TakeDamage(int amount, int knockback, bool right)
     {
-        currentHealth -= amount;
-        healthBar.setHealth(currentHealth);
-
-        playerMovement.onHit = true;
-
-        StartCoroutine(ColorChange());
-        StartCoroutine(OnHitDelay(time));
-
-        if(right)
+        if(!charging)
         {
-            rb.AddForce(new Vector2(-knockback, knockback / 2));
-        }
-        else
-        {
-            rb.AddForce(new Vector2(knockback, knockback / 2));
-            
-        }
-        if(currentHealth <=0)
-        {
-            //die
-            Debug.Log(gameObject.name +" is Dead!");
-            
+            currentHealth -= amount;
+            healthBar.setHealth(currentHealth);
+
+            playerMovement.onHit = true;
+
+            StartCoroutine(ColorChange());
+            StartCoroutine(OnHitDelay(time));
+
+            if(right)
+            {
+                rb.AddForce(new Vector2(-knockback, knockback / 2));
+            }
+            else
+            {
+                rb.AddForce(new Vector2(knockback, knockback / 2));
+                
+            }
+            if(currentHealth <=0)
+            {
+                //die
+                Debug.Log(gameObject.name +" is Dead!");
+                
+            }
         }
     }
     public void gainXP(float xp)
@@ -89,27 +116,30 @@ public class PlayerManager : MonoBehaviour
     }
     public void BossDamage(int amount, float knockbackX, float knockbackY, bool right)
     {
-        currentHealth -= amount;
-
-        playerMovement.onHit = true;
-
-        StartCoroutine(ColorChange());
-        StartCoroutine(OnHitDelay(time));
-
-        if(right)
+        if(!charging)
         {
-            rb.AddForce(new Vector2(-knockbackX, knockbackY));
-        }
-        else
-        {
-            rb.AddForce(new Vector2(knockbackX, knockbackY));
-            
-        }
-        if(currentHealth <=0)
-        {
-            //die
-            Debug.Log(gameObject.name +" is Dead!");
-            
+            currentHealth -= amount;
+
+            playerMovement.onHit = true;
+
+            StartCoroutine(ColorChange());
+            StartCoroutine(OnHitDelay(time));
+
+            if(right)
+            {
+                rb.AddForce(new Vector2(-knockbackX, knockbackY));
+            }
+            else
+            {
+                rb.AddForce(new Vector2(knockbackX, knockbackY));
+                
+            }
+            if(currentHealth <=0)
+            {
+                //die
+                Debug.Log(gameObject.name +" is Dead!");
+                
+            }
         }
     }
     private IEnumerator ColorChange()
@@ -131,5 +161,16 @@ public class PlayerManager : MonoBehaviour
         icons[0].sprite = pact.getIcon();
         icons[1].sprite = ability1.getIcon();
         icons[2].sprite = ability2.getIcon();
+    }
+    private void OnCollisionEnter2D(Collision2D collision) 
+    {
+        if(collision.gameObject.tag == "Enemy")
+        {
+            collision.gameObject.GetComponent<Enemy>().Hit(Mathf.Abs(rb.velocity.x)/3,knockback*2,playerMovement.facingRight);
+        }
+        if(collision.gameObject.tag == "Boss")
+        {
+            collision.gameObject.GetComponent<Boss>().Hit(Mathf.Abs(rb.velocity.x)/3);
+        }
     }
 }

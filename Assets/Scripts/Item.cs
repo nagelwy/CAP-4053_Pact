@@ -21,6 +21,10 @@ public interface Item
     {
         
     }
+    public float getCD()
+    {
+        return 0f;
+    }
     public Sprite getIcon()
     {
         return null;
