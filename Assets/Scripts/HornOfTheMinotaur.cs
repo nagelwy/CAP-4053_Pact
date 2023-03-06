@@ -10,17 +10,24 @@ public class HornOfTheMinotaur : MonoBehaviour, Item
     public Text Desc;
     public Button button;
     public Image image;
+
     public string titleString;
     public string descString;
+
     private PlayerManager pm;
     private SelectionManager sm;
     public Sprite icon;
+
     bool charging;
     bool right;
+
     float chargetime = 1f;
     float time; 
     float chargeaccel = 250f;
     public float CD;
+
+    public float cooldown;
+    private float nextAbilityTime = 0;
 
     void Start()
     {
@@ -79,17 +86,28 @@ public class HornOfTheMinotaur : MonoBehaviour, Item
     }
     public void onUse()
     {
-        Debug.Log("This ability has been used");
-        charging = true;
-        pm.charging = true;
-        if(pm.gameObject.GetComponent<PlayerMovement>().facingRight)
+        if(Time.time > nextAbilityTime)
         {
-           right = true;
+            Debug.Log("This ability has been used");
+            charging = true;
+            pm.charging = true;
+
+            nextAbilityTime = Time.time + cooldown;
+
+            if(pm.gameObject.GetComponent<PlayerMovement>().facingRight)
+            {
+            right = true;
+            }
+            else
+            {
+                right = false;
+            }
         }
         else
         {
-            right = false;
+            print("Cannot use, ability on cooldown");
         }
+
     }
     public float getCD()
     {
