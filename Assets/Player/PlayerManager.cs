@@ -8,7 +8,7 @@ public class PlayerManager : MonoBehaviour
     public PlayerCombat playerCombat;
     public PlayerMovement playerMovement;
     public SoundController sc;
-    public float MaxHealth = 10;
+    public float MaxHealth;
     public float currentHealth;
     public float MoveSpeed;
     public float AttackTime;

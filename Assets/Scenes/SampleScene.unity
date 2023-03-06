@@ -162,6 +162,7 @@ MonoBehaviour:
     path
   icon: {fileID: 21300000, guid: 6d02b4fee807ec1499a163312d9d5eed, type: 3}
   CD: 5
+  cooldown: 0
 --- !u!4 &12952147
 Transform:
   m_ObjectHideFlags: 0
@@ -1952,10 +1953,10 @@ RectTransform:
   m_Father: {fileID: 1763587668}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 37.5, y: -50}
-  m_SizeDelta: {x: 75, y: 75}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &457954013
 MonoBehaviour:
@@ -6536,10 +6537,10 @@ RectTransform:
   m_Father: {fileID: 1763587668}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 122.5, y: -50}
-  m_SizeDelta: {x: 75, y: 75}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1466631091
 MonoBehaviour:
@@ -7611,10 +7612,10 @@ RectTransform:
   m_Father: {fileID: 1763587668}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 207.5, y: -50}
-  m_SizeDelta: {x: 75, y: 75}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1616945488
 MonoBehaviour:
@@ -8090,7 +8091,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1763587668
 RectTransform:
   m_ObjectHideFlags: 0
@@ -9372,6 +9373,10 @@ PrefabInstance:
     - target: {fileID: 6421658094993474267, guid: aa4ae81b71051f74b912383e56a5c2a7, type: 3}
       propertyPath: time
       value: 0.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 6421658094993474267, guid: aa4ae81b71051f74b912383e56a5c2a7, type: 3}
+      propertyPath: MaxHealth
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 6421658094993474267, guid: aa4ae81b71051f74b912383e56a5c2a7, type: 3}
       propertyPath: MoveSpeed
