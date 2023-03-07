@@ -7,15 +7,21 @@ using Pathfinding;
 
 public class Enemy : MonoBehaviour
 {
+    [Header("Enemy Stats")]
     public float maxHealth;
     public float currentHealth;
     public int enemyxp;
+    public Transform firePoint;
+    public Transform enemyWeapon;
+    public GameObject Projectile;
     private Rigidbody2D rb;
     private SoundController sc;
+    
     [Header("Pathfinding")]
     public Transform target;
     public float activateDistance = 50f;
     public float pathUpdateSeconds = 2f;
+    public float maxRange = 30f;
 
     [Header("Physics")]
     public float speed = 200f;
@@ -23,13 +29,17 @@ public class Enemy : MonoBehaviour
     public float jumpNodeHeightRequirement = 0.8f;
     public float jumpModifier = 0.3f;
     public float jumpCheckOffset = 0.1f;
+    public float fireRate; 
 
     [Header("Custom Behavior")]
     public bool followEnable = true;
     public bool jumpEnable = false;
     public bool directionLookEnabled = true;
+    public bool rangeEnable = false;
 
     // Path variables for finding player and waypoints
+    private float timeFiring;
+    private bool inRange;
     private Path path;
     private int currentWaypoint = 0;
     // private bool pathIsEnded = false;
@@ -61,8 +71,17 @@ public class Enemy : MonoBehaviour
         {
             PathFollow();
         }
+
+        if(inRange)
+        {
+            rb.velocity = Vector2.zero;
+        }
+        else
+        {
+            PathFollow();
+        }
     }
-     private void OnPathCompete(Path p)
+    private void OnPathCompete(Path p)
     {
         if(!p.error)
         {
@@ -109,8 +128,43 @@ public class Enemy : MonoBehaviour
             }
         }
 
+        // If we are in range stop moving and fire
+        if(rangeEnable)
+        {
+            Vector3 diff = target.position - enemyWeapon.transform.position;
+            // float rotate = Mathf.Atan2(diff.y, diff.x) * Mathf.Rad2Deg;
+            // enemyWeapon.transform.rotation = Quaternion.Euler(0f,0f,rotate);
+
+            if(Vector2.Distance(transform.position, target.position) <= maxRange)
+            {
+                inRange = true;
+            }
+            else    
+            {
+                inRange = false;
+            }
+
+            if(Vector2.Distance(transform.position, target.position) <= maxRange)
+            {
+                if(timeFiring <= 0)
+                {
+                    GameObject Proj = Instantiate(Projectile, firePoint.position, firePoint.transform.rotation);
+                    Proj.GetComponent<EnemyProjectiles>().direction = diff.normalized;
+                    timeFiring = fireRate;
+                    // Debug.Log("yo");
+                }
+                else
+                {
+                    timeFiring -= Time.deltaTime;
+                }
+            }
+        }
+
         // Movement
-        rb.AddForce(force);
+        if(!inRange)
+        {
+            rb.AddForce(force);
+        }
 
         // Next point
         float distance = Vector3.Distance(transform.position, path.vectorPath[currentWaypoint]);
@@ -139,10 +193,11 @@ public class Enemy : MonoBehaviour
     {
         return Vector3.Distance(transform.position, target.transform.position) < activateDistance;
     }
+
     public void Hit(float Damage, float knockback, bool right)
     {
         Debug.Log("I was Hit!");
-        currentHealth-= Damage;
+        currentHealth -= Damage;
         StartCoroutine(ColorChange());
         if(right)
         {
