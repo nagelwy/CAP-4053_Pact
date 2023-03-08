@@ -38,7 +38,7 @@ public class EnemyProjectiles : MonoBehaviour
         if(col.gameObject.tag == "Player")
         {
             col.gameObject.GetComponent<PlayerManager>().TakeDamage(damage, 0, direction.x >= 0);
-            Destroy(gameObject);
         }
+        Destroy(gameObject);
     }
 }

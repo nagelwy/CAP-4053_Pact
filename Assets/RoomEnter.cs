@@ -5,6 +5,7 @@ using UnityEngine;
 public class RoomEnter : MonoBehaviour
 {
     public GameObject[] doors;
+    public Boss b;
     // Start is called before the first frame update
     void Start()
     {
@@ -23,6 +24,7 @@ public class RoomEnter : MonoBehaviour
             foreach(GameObject d in doors)
             {
                 d.SetActive(true);
+                b.onEnter();
             }
         }
     }

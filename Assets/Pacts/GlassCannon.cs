@@ -29,6 +29,7 @@ public class GlassCannon : MonoBehaviour, Pact
     {
         pm = GameObject.Find("Player").GetComponent<PlayerManager>();
         pm.MaxHealth /= healthDivide;
+        pm.currentHealth = pm.MaxHealth;
         pm.Damage *= damageMult;
         pm.pact = this;
     }

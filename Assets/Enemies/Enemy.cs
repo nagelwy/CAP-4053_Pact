@@ -39,7 +39,7 @@ public class Enemy : MonoBehaviour
 
     // Path variables for finding player and waypoints
     private float timeFiring;
-    private bool inRange;
+    public bool inRange;
     private Path path;
     private int currentWaypoint = 0;
     // private bool pathIsEnded = false;
@@ -74,11 +74,6 @@ public class Enemy : MonoBehaviour
 
         if(inRange)
         {
-            rb.velocity = Vector2.zero;
-        }
-        else
-        {
-            PathFollow();
         }
     }
     private void OnPathCompete(Path p)

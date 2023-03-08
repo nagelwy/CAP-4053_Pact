@@ -61,6 +61,10 @@ public class Boss : MonoBehaviour
             target.gameObject.GetComponent<PlayerManager>().TakeDamage(damage, knockback, gameObject.transform.position.x >= target.gameObject.GetComponent<PlayerManager>().gameObject.transform.position.x);
         }
     }
+    public void onEnter()
+    {
+        gameObject.GetComponent<Animator>().SetTrigger("OnAwake");
+    }
 
     public void LookAtPlayer()
     {

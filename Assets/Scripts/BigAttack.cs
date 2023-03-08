@@ -51,7 +51,7 @@ public class BigAttack : MonoBehaviour, Item
         Debug.Log("BigAttack");
         PlayerCombat playerc = GameObject.Find("Player").GetComponent<PlayerCombat>();
         playerc.gameObject.GetComponent<PlayerMovement>().attacking = true;
-        playerc.gameObject.GetComponent<Animator>().SetBool("Attack", true);
+        playerc.gameObject.GetComponent<Animator>().SetBool("bigAttack", true);
         Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(playerc.attackPoint.position,1.5f,enemyLayers);
         Collider2D[] hitBoss = Physics2D.OverlapCircleAll(playerc.attackPoint.position,1.5f,bossLayers);
         foreach(Collider2D enemy in hitEnemies)

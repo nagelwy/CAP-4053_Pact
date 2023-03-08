@@ -83,4 +83,9 @@ public class PlayerCombat : MonoBehaviour
         //anim.SetBool("Attack3", false);
         gameObject.GetComponent<PlayerMovement>().attacking = false;
     }
+    void EndBigAttack()
+    {
+        anim.SetBool("bigAttack", false);
+        gameObject.GetComponent<PlayerMovement>().attacking = false;
+    }
 }

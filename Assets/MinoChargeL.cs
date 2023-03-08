@@ -13,7 +13,7 @@ public class MinoChargeL : StateMachineBehaviour
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         rb = animator.GetComponent<Rigidbody2D>();
-        animator.transform.localScale = new Vector3(1,1,1);
+        animator.transform.localScale = new Vector3(3,3,3);
         boss = animator.GetComponent<Boss>();
         maxVelocity = maxVelocityBase/boss.currentHealth;
         accelSpeed += 1f;

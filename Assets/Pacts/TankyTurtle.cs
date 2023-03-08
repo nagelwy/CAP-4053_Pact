@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class GentleGiant : MonoBehaviour, Pact
+public class TankyTurtle : MonoBehaviour, Pact
 {
     public GameObject PactSelect;
     public Text Title;
@@ -11,9 +11,10 @@ public class GentleGiant : MonoBehaviour, Pact
     public Button button;
     public string titleString;
     public string descString;
-    private PlayerManager playerManager;
+    private PlayerManager pm;
     public float healthMult;
-    public float damageDiv;
+    public float attackSpeedDiv;
+    public float moveSpeedDiv;
     public Sprite icon;
 
     void Start()
@@ -27,11 +28,12 @@ public class GentleGiant : MonoBehaviour, Pact
     }
     public void UpdateStats()
     {
-        playerManager = GameObject.Find("Player").GetComponent<PlayerManager>();
-        playerManager.MaxHealth *= healthMult;
-        playerManager.currentHealth = playerManager.MaxHealth;
-        playerManager.Damage /= damageDiv;
-        playerManager.pact = this;
+        pm = GameObject.Find("Player").GetComponent<PlayerManager>();
+        pm.MaxHealth *= healthMult;
+        pm.currentHealth = pm.MaxHealth;
+        pm.AttackTime *= attackSpeedDiv;
+        pm.MoveSpeed /= moveSpeedDiv;
+        pm.pact = this;
     }
     public Sprite getIcon()
     {
