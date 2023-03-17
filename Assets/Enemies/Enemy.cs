@@ -11,6 +11,7 @@ public class Enemy : MonoBehaviour
     public float maxHealth;
     public float currentHealth;
     public int enemyxp;
+    public int enemyGold;
     public Transform firePoint;
     public Transform enemyWeapon;
     public GameObject Projectile;
@@ -220,6 +221,7 @@ public class Enemy : MonoBehaviour
     void Die()
     {
         target.gameObject.GetComponent<PlayerManager>().xp += enemyxp;
+        target.gameObject.GetComponent<PlayerManager>().gold += enemyGold;
         //Die Animation
         gameObject.SetActive(false); // fix this to fully despawn enemy.
     }

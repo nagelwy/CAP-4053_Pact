@@ -7,6 +7,7 @@ public class Boss : MonoBehaviour
     public float currentHealth;
     public float MaxHealth;
     public int Xp;
+    public int Gold;
     SoundController sc;
     public int damage;
     public int knockback;
@@ -50,6 +51,7 @@ public class Boss : MonoBehaviour
     void Die()
     {
         target.gameObject.GetComponent<PlayerManager>().xp += Xp;
+        target.gameObject.GetComponent<PlayerManager>().gold += Gold;
         //Die Animation
         gameObject.SetActive(false); // fix this to fully despawn enemy.
     }

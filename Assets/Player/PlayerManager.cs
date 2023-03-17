@@ -32,6 +32,7 @@ public class PlayerManager : MonoBehaviour
     public float ab1t;
     public float Ability2CD;
     public float ab2t;
+    public int gold;
 
     // Start is called before the first frame update
     void Start()
@@ -41,7 +42,7 @@ public class PlayerManager : MonoBehaviour
         sc = GameObject.Find("SoundManager").GetComponent<SoundController>();
 
         currentHealth = MaxHealth;
-        healthBar.setMaxHealth(MaxHealth);
+        //healthBar.setMaxHealth(MaxHealth);
     }
 
     // Update is called once per frame
@@ -86,7 +87,7 @@ public class PlayerManager : MonoBehaviour
         if(!charging)
         {
             currentHealth -= amount;
-            healthBar.setHealth(currentHealth);
+            //healthBar.setHealth(currentHealth);
 
             playerMovement.onHit = true;
 
@@ -157,7 +158,7 @@ public class PlayerManager : MonoBehaviour
 
     public void UpdateIcons()
     {
-        healthBar.setMaxHealth(MaxHealth);
+        //healthBar.setMaxHealth(MaxHealth);
         icons[0].sprite = pact.getIcon();
         icons[1].sprite = ability1.getIcon();
         icons[2].sprite = ability2.getIcon();
