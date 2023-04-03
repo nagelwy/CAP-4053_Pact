@@ -63,6 +63,10 @@ public class BigAttack : MonoBehaviour, Item
             boss.gameObject.GetComponent<Boss>().Hit(pm.Damage*damageMult);
         }
     }
+    public void UpdateItemStats(int index, float variable)
+    {
+        
+    }
     public Sprite getIcon()
     {
         return icon;

@@ -7,6 +7,7 @@ public class PlayerManager : MonoBehaviour
 {
     public PlayerCombat playerCombat;
     public PlayerMovement playerMovement;
+    public GameObject arrowPos;
     public SoundController sc;
     public float MaxHealth;
     public float currentHealth;
@@ -24,7 +25,7 @@ public class PlayerManager : MonoBehaviour
     public int Level;
     public int xp;
     public int xpToLevel;
-
+    public GameObject levelButton;
     public HealthBar healthBar;
     public XPBar xpBar;
     public bool charging;
@@ -33,6 +34,7 @@ public class PlayerManager : MonoBehaviour
     public float Ability2CD;
     public float ab2t;
     public int gold;
+    public float chargeDamage;
 
     // Start is called before the first frame update
     void Start()
@@ -79,6 +81,8 @@ public class PlayerManager : MonoBehaviour
         {
             Debug.Log("Level up!");
             Level++;
+            levelButton.SetActive(true);
+            levelButton.GetComponent<levelButton>().numOfUpgrades++;
             xp = 0;
         }
     }
@@ -167,13 +171,14 @@ public class PlayerManager : MonoBehaviour
     {
         if(charging)
         {
+            
             if(collision.gameObject.tag == "Enemy")
             {
-                collision.gameObject.GetComponent<Enemy>().Hit(Mathf.Abs(rb.velocity.x)/3,knockback*2,playerMovement.facingRight);
+                collision.gameObject.GetComponent<Enemy>().Hit(Mathf.Abs(rb.velocity.x*chargeDamage)/3,knockback*2,playerMovement.facingRight);
             }
             if(collision.gameObject.tag == "Boss")
             {
-                collision.gameObject.GetComponent<Boss>().Hit(Mathf.Abs(rb.velocity.x)/3);
+                collision.gameObject.GetComponent<Boss>().Hit(Mathf.Abs(rb.velocity.x*chargeDamage)/3);
             }
         }
     }

@@ -21,6 +21,10 @@ public interface Item
     {
         
     }
+    public void UpdateItemStats(int index, float variable)
+    {
+        
+    }
     public float getCD()
     {
         return 0f;

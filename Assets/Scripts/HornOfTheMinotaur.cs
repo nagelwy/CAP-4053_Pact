@@ -28,6 +28,7 @@ public class HornOfTheMinotaur : MonoBehaviour, Item
 
     public float cooldown;
     private float nextAbilityTime = 0;
+    public float damagePerSpeed;
 
     void Start()
     {
@@ -43,6 +44,7 @@ public class HornOfTheMinotaur : MonoBehaviour, Item
             {
                 Debug.Log(time);
                 time+= Time.deltaTime;
+                pm.chargeDamage = damagePerSpeed;
                 if(right)
                 {
                     pm.gameObject.GetComponent<Rigidbody2D>().AddForce(new Vector2((chargeaccel*time)+10,0));
@@ -83,6 +85,18 @@ public class HornOfTheMinotaur : MonoBehaviour, Item
             pm = GameObject.Find("Player").GetComponent<PlayerManager>();
             pm.ability2 = this;
         }
+    }
+    public void UpdateItemStats(int index, float variable)
+    {
+        if(index == 0)
+        {
+            chargeaccel += variable;
+        }
+        else if(index == 1)
+        {
+            damagePerSpeed += variable;
+        }
+
     }
     public void onUse()
     {

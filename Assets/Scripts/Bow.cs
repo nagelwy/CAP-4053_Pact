@@ -16,6 +16,10 @@ public class Bow : MonoBehaviour, Item
     private SelectionManager sm;
     public Sprite icon;
     public float CD;
+    public GameObject[] arrows;
+    public bool explosive;
+    public float bowForce;
+    public float Damage;
 
     void Start()
     {
@@ -45,13 +49,49 @@ public class Bow : MonoBehaviour, Item
     public void onUse()
     {
         Debug.Log("This ability has been used");
+        //bow fire animation
         if(pm.gameObject.GetComponent<PlayerMovement>().facingRight)
         {
-            pm.gameObject.GetComponent<Rigidbody2D>().AddForce(new Vector2(250f,0));
+            GameObject arrow;
+            if(explosive)
+            {
+                arrow = Instantiate(arrows[1],pm.arrowPos.transform.position,Quaternion.identity);
+            }
+            else
+            {
+                arrow = Instantiate(arrows[0],pm.arrowPos.transform.position,Quaternion.identity);
+            }
+            arrow.GetComponent<Rigidbody2D>().AddForce(new Vector2(bowForce,0));
+            arrow.GetComponent<Arrow>().damage = Damage;
         }
         else
         {
-            pm.gameObject.GetComponent<Rigidbody2D>().AddForce(new Vector2(-250f,0));
+            GameObject arrow;
+            if(explosive)
+            {
+                arrow = Instantiate(arrows[1],pm.arrowPos.transform.position,Quaternion.identity);
+            }
+            else
+            {
+                arrow = Instantiate(arrows[0],pm.arrowPos.transform.position,Quaternion.identity);
+            }
+            arrow.GetComponent<Rigidbody2D>().AddForce(new Vector2(-bowForce,0));
+            arrow.GetComponent<Arrow>().damage = Damage;
+        }
+    }
+    public void UpdateItemStats(int index, float variable)
+    {
+        if(index == 0)
+        {
+            Damage += variable;
+        }
+        else if(index == 1)
+        {
+            bowForce += variable;
+        }
+        else if(index == 2)
+        {
+            explosive = true;
         }
     }
     public Sprite getIcon()

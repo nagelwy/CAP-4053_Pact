@@ -51,6 +51,7 @@ public class Enemy : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        target = GameObject.Find("Player").transform;
         currentHealth = maxHealth;
         rb = gameObject.GetComponent<Rigidbody2D>();
         sc = GameObject.Find("SoundManager").GetComponent<SoundController>();
