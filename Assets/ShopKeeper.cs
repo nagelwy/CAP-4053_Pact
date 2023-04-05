@@ -19,7 +19,7 @@ public class ShopKeeper : MonoBehaviour
     {
         if(other.tag == "Player")
         {
-            if(Input.GetKeyDown("f"))
+            if(Input.GetKey("f"))
             {
                 shop.SetActive(true);
             }
