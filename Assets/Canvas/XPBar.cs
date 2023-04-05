@@ -6,9 +6,15 @@ using UnityEngine.UI;
 public class XPBar : MonoBehaviour
 {
     public Slider slider;
+    public PlayerManager pm;
 
-    public void setXP(float xp)
+    void Start()
     {
-        slider.value = xp;
+        pm = GameObject.Find("Player").GetComponent<PlayerManager>();
+    }
+    void Update()
+    {
+        slider.value = pm.xp;
+        slider.maxValue = pm.xpToLevel;
     }
 }

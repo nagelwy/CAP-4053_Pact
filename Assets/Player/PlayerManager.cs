@@ -9,8 +9,6 @@ public class PlayerManager : MonoBehaviour
     public PlayerMovement playerMovement;
     public GameObject arrowPos;
     public SoundController sc;
-    public float MaxHealth;
-    public float currentHealth;
     public float MoveSpeed;
     public float AttackTime;
     public float Damage;
@@ -23,11 +21,16 @@ public class PlayerManager : MonoBehaviour
     public float knockback;
     public Image[] icons;
     public int Level;
-    public int xp;
-    public int xpToLevel;
+    
     public GameObject levelButton;
     public HealthBar healthBar;
+    public float MaxHealth;
+    public float currentHealth;
+
     public XPBar xpBar;
+    public int xp;
+    public int xpToLevel;
+
     public bool charging;
     public float Ability1CD;
     public float ab1t;
@@ -114,10 +117,6 @@ public class PlayerManager : MonoBehaviour
                 
             }
         }
-    }
-    public void gainXP(float xp)
-    {
-        xpBar.setXP(xp);
     }
     public void BossDamage(int amount, float knockbackX, float knockbackY, bool right)
     {
