@@ -224,6 +224,7 @@ public class Enemy : MonoBehaviour
         target.gameObject.GetComponent<PlayerManager>().xp += enemyxp;
         target.gameObject.GetComponent<PlayerManager>().gold += enemyGold;
         //Die Animation
-        gameObject.SetActive(false); // fix this to fully despawn enemy.
+        Destroy(gameObject);
+
     }
 }

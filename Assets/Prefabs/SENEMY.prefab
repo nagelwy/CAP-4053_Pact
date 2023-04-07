@@ -198,7 +198,7 @@ MonoBehaviour:
   jumpNodeHeightRequirement: 0.5
   jumpModifier: 1.5
   jumpCheckOffset: 0.1
-  fireRate: 2
+  fireRate: 3
   followEnable: 1
   jumpEnable: 0
   directionLookEnabled: 1

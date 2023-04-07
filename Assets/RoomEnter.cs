@@ -5,7 +5,9 @@ using UnityEngine;
 public class RoomEnter : MonoBehaviour
 {
     public GameObject[] doors;
+    public bool bossRoom;
     public Boss b;
+    public GameObject[] enemies;
     // Start is called before the first frame update
     void Start()
     {
@@ -15,7 +17,21 @@ public class RoomEnter : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        bool enemiesAlive = false;
+        foreach(GameObject enemy in enemies)
+        {
+            if( enemy != null)
+            {
+                enemiesAlive = true;
+            }
+        }
+        if(!enemiesAlive)
+        {
+            foreach(GameObject d in doors)
+            {
+                d.SetActive(false);
+            }
+        }
     }
     void OnTriggerEnter2D(Collider2D col)
     {
@@ -24,7 +40,10 @@ public class RoomEnter : MonoBehaviour
             foreach(GameObject d in doors)
             {
                 d.SetActive(true);
-                b.onEnter();
+                if(bossRoom)
+                {
+                    b.onEnter();
+                }
             }
         }
     }
