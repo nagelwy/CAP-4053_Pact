@@ -157,7 +157,7 @@ MonoBehaviour:
   enemyWeapon: {fileID: 0}
   Projectile: {fileID: 0}
   target: {fileID: 0}
-  activateDistance: 10000
+  activateDistance: 30
   pathUpdateSeconds: 0.5
   maxRange: 30
   speed: 500

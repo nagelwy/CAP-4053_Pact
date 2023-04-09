@@ -5,6 +5,7 @@ using UnityEngine;
 public class UpgradeManager : MonoBehaviour
 {
     public GameObject[] items;
+    public GameObject[] GenericUpgrades;
     public GameObject[] hornUpgrades;
     public GameObject[] heavyUpgrades;
     public GameObject[] bowUpgrades;
@@ -23,7 +24,11 @@ public class UpgradeManager : MonoBehaviour
     public void sendUpgrades(int index1, int index2)
     {
         List<GameObject> temp = new List<GameObject>();
-        if(index1 == 0)
+        for (int i = 0; i < GenericUpgrades.Length; i++)
+        {
+            temp.Add(GenericUpgrades[i]);
+        }
+        if (index1 == 0)
         {
             for(int i = 0; i < hornUpgrades.Length; i++)
             {
