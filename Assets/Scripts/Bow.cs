@@ -20,12 +20,93 @@ public class Bow : MonoBehaviour, Item
     public bool explosive;
     public float bowForce;
     public float Damage;
+    bool ab1or2;
+    public bool charging;
+    public string key;
+    public float chargeTime;
+    public float maxChargeTime;
+    bool maxChargeReached;
+    bool playerms;
 
     void Start()
     {
         sm = GameObject.Find("GameStartManager").GetComponent<SelectionManager>();
         displayInfo();
 
+    }
+    IEnumerator flash()
+    {
+        pm.GetComponent<SpriteRenderer>().color = Color.green;
+        yield return new WaitForSeconds(0.1f);
+        pm.GetComponent<SpriteRenderer>().color = Color.white;
+    }
+    void Update()
+    {
+        if(charging)
+        {
+            if(!playerms)
+            {
+                pm.MoveSpeed /= 2;
+                playerms = true;
+            }
+            chargeTime += Time.deltaTime;
+            if(chargeTime >= maxChargeTime && !maxChargeReached)
+            {
+                StartCoroutine(flash());
+                maxChargeReached = true;
+            }
+            
+            if (Input.GetAxis(key) == 0)
+            {
+                if (pm.gameObject.GetComponent<PlayerMovement>().facingRight)
+                {
+                    GameObject arrow;
+                    if (explosive)
+                    {
+                        arrow = Instantiate(arrows[1], pm.arrowPos.transform.position, Quaternion.identity);
+                    }
+                    else
+                    {
+                        arrow = Instantiate(arrows[0], pm.arrowPos.transform.position, Quaternion.identity);
+                    }
+                    arrow.GetComponent<Rigidbody2D>().AddForce(new Vector2(bowForce, 0));
+                    if (maxChargeReached)
+                    {
+                        arrow.GetComponent<Arrow>().damage = Damage*maxChargeTime;
+                    }
+                    else
+                    {
+                        arrow.GetComponent<Arrow>().damage = Damage * chargeTime;
+                    }
+                }
+                else
+                {
+                    GameObject arrow;
+                    if (explosive)
+                    {
+                        arrow = Instantiate(arrows[1], pm.arrowPos.transform.position, Quaternion.identity);
+                    }
+                    else
+                    {
+                        arrow = Instantiate(arrows[0], pm.arrowPos.transform.position, Quaternion.identity);
+                    }
+                    arrow.GetComponent<Rigidbody2D>().AddForce(new Vector2(-bowForce, 0));
+                    if (maxChargeReached)
+                    {
+                        arrow.GetComponent<Arrow>().damage = Damage * maxChargeTime;
+                    }
+                    else
+                    {
+                        arrow.GetComponent<Arrow>().damage = Damage * chargeTime;
+                    }
+                }
+                charging = false;
+                maxChargeReached = false;
+                pm.MoveSpeed *= 2;
+                playerms = false;
+            }
+            
+        }
     }
     public void displayInfo()
     {
@@ -39,45 +120,21 @@ public class Bow : MonoBehaviour, Item
         {
             pm = GameObject.Find("Player").GetComponent<PlayerManager>();
             pm.ability1 = this;
+            key = "Ability 1";
         }
         else
         {
             pm = GameObject.Find("Player").GetComponent<PlayerManager>();
             pm.ability2 = this;
+            key = "Ability 2";
         }
     }
     public void onUse()
     {
         Debug.Log("This ability has been used");
         //bow fire animation
-        if(pm.gameObject.GetComponent<PlayerMovement>().facingRight)
-        {
-            GameObject arrow;
-            if(explosive)
-            {
-                arrow = Instantiate(arrows[1],pm.arrowPos.transform.position,Quaternion.identity);
-            }
-            else
-            {
-                arrow = Instantiate(arrows[0],pm.arrowPos.transform.position,Quaternion.identity);
-            }
-            arrow.GetComponent<Rigidbody2D>().AddForce(new Vector2(bowForce,0));
-            arrow.GetComponent<Arrow>().damage = Damage;
-        }
-        else
-        {
-            GameObject arrow;
-            if(explosive)
-            {
-                arrow = Instantiate(arrows[1],pm.arrowPos.transform.position,Quaternion.identity);
-            }
-            else
-            {
-                arrow = Instantiate(arrows[0],pm.arrowPos.transform.position,Quaternion.identity);
-            }
-            arrow.GetComponent<Rigidbody2D>().AddForce(new Vector2(-bowForce,0));
-            arrow.GetComponent<Arrow>().damage = Damage;
-        }
+        charging = true;
+        chargeTime = 0;
     }
     public void UpdateItemStats(int index, float variable)
     {

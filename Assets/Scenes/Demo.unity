@@ -8842,6 +8842,10 @@ MonoBehaviour:
   explosive: 0
   bowForce: 500
   Damage: 2
+  charging: 0
+  key: 
+  chargeTime: 0
+  maxChargeTime: 5
 --- !u!4 &1593784504
 Transform:
   m_ObjectHideFlags: 0
