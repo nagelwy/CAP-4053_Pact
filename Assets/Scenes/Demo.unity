@@ -5965,8 +5965,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemIndex: 0
   variable: 5
-  Title: accel
-  Desc: accel
+  Title: Horn of the Minotaur MoveSpeed Up
+  Desc: Increases the movespeed of the horn of the minotaur active
 --- !u!1 &1196454080
 GameObject:
   m_ObjectHideFlags: 0
@@ -12321,9 +12321,11 @@ MonoBehaviour:
   descString: The horn grants a powerful charging rush which damages enemys in its
     path
   icon: {fileID: 21300000, guid: 6d02b4fee807ec1499a163312d9d5eed, type: 3}
+  chargetime: 0.2
+  moveSpeed: 20
   CD: 5
   cooldown: 0
-  damagePerSpeed: 0
+  damagePerSpeed: 0.2
 --- !u!4 &2093343480
 Transform:
   m_ObjectHideFlags: 0

@@ -173,11 +173,11 @@ public class PlayerManager : MonoBehaviour
             
             if(collision.gameObject.tag == "Enemy")
             {
-                collision.gameObject.GetComponent<Enemy>().Hit(Mathf.Abs(rb.velocity.x*chargeDamage)/3,knockback*2,playerMovement.facingRight);
+                collision.gameObject.GetComponent<Enemy>().Hit(Mathf.Abs(rb.velocity.x*chargeDamage),knockback*2,playerMovement.facingRight);
             }
             if(collision.gameObject.tag == "Boss")
             {
-                collision.gameObject.GetComponent<Boss>().Hit(Mathf.Abs(rb.velocity.x*chargeDamage)/3);
+                collision.gameObject.GetComponent<Boss>().Hit(Mathf.Abs(rb.velocity.x*chargeDamage));
             }
         }
     }

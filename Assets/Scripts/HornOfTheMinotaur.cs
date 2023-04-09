@@ -21,9 +21,9 @@ public class HornOfTheMinotaur : MonoBehaviour, Item
     bool charging;
     bool right;
 
-    float chargetime = 1f;
-    float time; 
-    float chargeaccel = 250f;
+    public float chargetime;
+    float time;
+    public float moveSpeed;
     public float CD;
 
     public float cooldown;
@@ -42,21 +42,21 @@ public class HornOfTheMinotaur : MonoBehaviour, Item
         {
             if(time < chargetime)
             {
-                Debug.Log(time);
                 time+= Time.deltaTime;
                 pm.chargeDamage = damagePerSpeed;
                 if(right)
                 {
-                    pm.gameObject.GetComponent<Rigidbody2D>().AddForce(new Vector2((chargeaccel*time)+10,0));
+                    pm.gameObject.GetComponent<Rigidbody2D>().velocity = new Vector3(moveSpeed, 0, 0); 
                 }
                 else
                 {
-                    pm.gameObject.GetComponent<Rigidbody2D>().AddForce(new Vector2(-((chargeaccel*time)+10),0));
+                    pm.gameObject.GetComponent<Rigidbody2D>().velocity = new Vector3(-moveSpeed, 0, 0);
                 }
             }
             else
             {
                 time = 0;
+                pm.gameObject.GetComponent<Rigidbody2D>().velocity = new Vector3(0, 0, 0);
                 charging = false;
                 StartCoroutine(chargeIFrames());
             }
@@ -90,7 +90,7 @@ public class HornOfTheMinotaur : MonoBehaviour, Item
     {
         if(index == 0)
         {
-            chargeaccel += variable;
+            moveSpeed += variable;
         }
         else if(index == 1)
         {
