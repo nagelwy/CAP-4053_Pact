@@ -25,8 +25,6 @@ public class HornOfTheMinotaur : MonoBehaviour, Item
     float time;
     public float moveSpeed;
     public float CD;
-
-    public float cooldown;
     private float nextAbilityTime = 0;
     public float damagePerSpeed;
 
@@ -100,13 +98,10 @@ public class HornOfTheMinotaur : MonoBehaviour, Item
     }
     public void onUse()
     {
-        if(Time.time > nextAbilityTime)
-        {
             Debug.Log("This ability has been used");
             charging = true;
             pm.charging = true;
 
-            nextAbilityTime = Time.time + cooldown;
 
             if(pm.gameObject.GetComponent<PlayerMovement>().facingRight)
             {
@@ -116,12 +111,6 @@ public class HornOfTheMinotaur : MonoBehaviour, Item
             {
                 right = false;
             }
-        }
-        else
-        {
-            print("Cannot use, ability on cooldown");
-        }
-
     }
     public float getCD()
     {
