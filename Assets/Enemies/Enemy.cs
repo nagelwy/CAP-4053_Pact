@@ -46,7 +46,7 @@ public class Enemy : MonoBehaviour
     // private bool pathIsEnded = false;
     bool isGrounded = false;
     Seeker seeker;
-
+    Animator animator;
 
     // Start is called before the first frame update
     void Start()
@@ -64,6 +64,7 @@ public class Enemy : MonoBehaviour
             Debug.LogError("Select the player");
             return;
         }
+        animator = GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -72,7 +73,11 @@ public class Enemy : MonoBehaviour
         if(TargetInDistance() /*&& followEnabled */)
         {
             PathFollow();
+            animator.SetBool("isWalking", true);
         }
+        else
+            animator.SetBool("isWalking", false);
+
 
         if(inRange)
         {
