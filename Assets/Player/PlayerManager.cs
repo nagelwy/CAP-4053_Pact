@@ -38,6 +38,7 @@ public class PlayerManager : MonoBehaviour
     public float ab2t;
     public int gold;
     public float chargeDamage;
+    public GameObject deadScreen;
 
     // Start is called before the first frame update
     void Start()
@@ -88,6 +89,13 @@ public class PlayerManager : MonoBehaviour
             levelButton.GetComponent<levelButton>().numOfUpgrades++;
             xp = 0;
         }
+        if(currentHealth <=0)
+        {
+            playerMovement.dead = true;
+            deadScreen.SetActive(true);
+            deadScreen.GetComponent<Animator>().SetTrigger("Dead");
+        }
+
     }
     public void TakeDamage(int amount, int knockback, bool right)
     {
@@ -110,12 +118,6 @@ public class PlayerManager : MonoBehaviour
                 rb.AddForce(new Vector2(knockback, knockback / 2));
                 
             }
-            if(currentHealth <=0)
-            {
-                //die
-                Debug.Log(gameObject.name +" is Dead!");
-                
-            }
         }
     }
     public void BossDamage(int amount, float knockbackX, float knockbackY, bool right)
@@ -136,12 +138,6 @@ public class PlayerManager : MonoBehaviour
             else
             {
                 rb.AddForce(new Vector2(knockbackX, knockbackY));
-                
-            }
-            if(currentHealth <=0)
-            {
-                //die
-                Debug.Log(gameObject.name +" is Dead!");
                 
             }
         }

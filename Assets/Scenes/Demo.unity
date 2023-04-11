@@ -987,7 +987,7 @@ GameObject:
   - component: {fileID: 129917601}
   - component: {fileID: 129917600}
   m_Layer: 0
-  m_Name: BigAttack
+  m_Name: Explosion
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1010,18 +1010,16 @@ MonoBehaviour:
   Desc: {fileID: 2125395244}
   button: {fileID: 1935294153}
   image: {fileID: 662573996}
-  titleString: Big Attack
-  descString: This does a very big attack with a large crit!
-  enemyLayers:
-    serializedVersion: 2
-    m_Bits: 128
-  bossLayers:
-    serializedVersion: 2
-    m_Bits: 512
-  icon: {fileID: 21300000, guid: fa0cb05d87d658147a2fdc6f50f5bf4e, type: 3}
+  titleString: Explosion.
+  descString: Repels and damages enemies based on the distance to the player
+  icon: {fileID: 21300000, guid: b9738d0503678b244ac22557055d04e8, type: 3}
   CD: 5
-  damageMult: 2
-  knockbackMult: 2
+  range: 15
+  damageMult: 0.2
+  distanceMult: 75
+  hittableLayer:
+    serializedVersion: 2
+    m_Bits: 640
 --- !u!4 &129917601
 Transform:
   m_ObjectHideFlags: 0
@@ -1337,6 +1335,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   floor1Rooms:
   - {fileID: 3835853716263282620, guid: 3a88d1512f5f829498ec45ffe430a3ca, type: 3}
+  - {fileID: 5150792519516610522, guid: 190a5d623fb13e84b9620980e5eb36a2, type: 3}
+  - {fileID: 2604478710764744438, guid: 07ca39d57cd514c448b3cd3921d5a57a, type: 3}
+  - {fileID: 5111747167192762875, guid: d64c6ff1f02f8dd4fa82f5d772180bcc, type: 3}
   floor1Bosses:
   - {fileID: 3397139722293918788, guid: 8f5df35015f62894ebd82e523555243e, type: 3}
   floor1Size: 2
@@ -3327,6 +3328,117 @@ MonoBehaviour:
   variable: 1.1
   Title: Max Health Up
   Desc: Max health increase by 10%
+--- !u!1 &494613561
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 494613562}
+  - component: {fileID: 494613566}
+  - component: {fileID: 494613565}
+  - component: {fileID: 494613564}
+  - component: {fileID: 494613563}
+  m_Layer: 5
+  m_Name: DeadScreen
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!224 &494613562
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 494613561}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 1214377016}
+  m_Father: {fileID: 1787166734}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &494613563
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 494613561}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6591bdc28a4099a4394e800055f8a8c4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!95 &494613564
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 494613561}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 86766eb0d405ff24bb1ed7b1b94e733f, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+--- !u!114 &494613565
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 494613561}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 0, g: 0, b: 0, a: 0}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 0}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &494613566
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 494613561}
+  m_CullTransparentMesh: 1
 --- !u!1 &583497389
 GameObject:
   m_ObjectHideFlags: 0
@@ -3826,6 +3938,10 @@ PrefabInstance:
       propertyPath: AttackTime
       value: 0.5
       objectReference: {fileID: 0}
+    - target: {fileID: 6421658094993474267, guid: aa4ae81b71051f74b912383e56a5c2a7, type: 3}
+      propertyPath: deadScreen
+      value: 
+      objectReference: {fileID: 494613561}
     - target: {fileID: 6421658094993474267, guid: aa4ae81b71051f74b912383e56a5c2a7, type: 3}
       propertyPath: levelButton
       value: 
@@ -5755,6 +5871,86 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1214377015
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1214377016}
+  - component: {fileID: 1214377018}
+  - component: {fileID: 1214377017}
+  m_Layer: 5
+  m_Name: Text (Legacy)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1214377016
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1214377015}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 494613562}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1214377017
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1214377015}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 0, b: 0, a: 0}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_FontData:
+    m_Font: {fileID: 12800000, guid: fb8949db9390de048a1d8f936d43fce6, type: 3}
+    m_FontSize: 14
+    m_FontStyle: 0
+    m_BestFit: 1
+    m_MinSize: 10
+    m_MaxSize: 200
+    m_Alignment: 4
+    m_AlignByGeometry: 0
+    m_RichText: 1
+    m_HorizontalOverflow: 0
+    m_VerticalOverflow: 0
+    m_LineSpacing: 1
+  m_Text: Game Over
+--- !u!222 &1214377018
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1214377015}
+  m_CullTransparentMesh: 1
 --- !u!1 &1222932605
 GameObject:
   m_ObjectHideFlags: 0
@@ -9252,6 +9448,7 @@ RectTransform:
   - {fileID: 1960537942}
   - {fileID: 1357709515}
   - {fileID: 2121044919}
+  - {fileID: 494613562}
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -10975,7 +11172,6 @@ MonoBehaviour:
   chargetime: 0.2
   moveSpeed: 20
   CD: 5
-  cooldown: 0
   damagePerSpeed: 0.2
 --- !u!4 &2093343480
 Transform:

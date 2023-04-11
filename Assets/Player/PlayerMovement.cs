@@ -29,6 +29,7 @@ public class PlayerMovement : MonoBehaviour
     private bool hasDoubleJump;
     private bool isJumping;
     public bool onHit;
+    public bool dead;
     private SoundController sc;
     private PlayerManager pm;
     public bool attacking;
@@ -44,7 +45,7 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(isDashing || onHit)
+        if(isDashing || onHit || dead)
         {
             return;
         }
