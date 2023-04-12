@@ -7,7 +7,7 @@ public class UpgradeManager : MonoBehaviour
     public GameObject[] items;
     public GameObject[] GenericUpgrades;
     public GameObject[] hornUpgrades;
-    public GameObject[] heavyUpgrades;
+    public GameObject[] explosionUpgrades;
     public GameObject[] bowUpgrades;
     public UpgradeOptions UO;
     public BowDamage bd;
@@ -37,9 +37,9 @@ public class UpgradeManager : MonoBehaviour
         }
         else if(index1 == 1)
         {
-            for(int i = 0; i < heavyUpgrades.Length; i++)
+            for(int i = 0; i < explosionUpgrades.Length; i++)
             {
-                temp.Add(heavyUpgrades[i]);
+                temp.Add(explosionUpgrades[i]);
             }
         }
         else if(index1 == 2)
@@ -59,9 +59,9 @@ public class UpgradeManager : MonoBehaviour
         }
         else if(index2 == 1)
         {
-            for(int i = 0; i < heavyUpgrades.Length; i++)
+            for(int i = 0; i < explosionUpgrades.Length; i++)
             {
-                temp.Add(heavyUpgrades[i]);
+                temp.Add(explosionUpgrades[i]);
             }
         }
         else if(index2 == 2)

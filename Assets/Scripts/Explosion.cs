@@ -20,6 +20,9 @@ public class Explosion : MonoBehaviour, Item
     public float damageMult;
     public float distanceMult;
     public LayerMask hittableLayer;
+    public float numOfExtraExplosions;
+    public float currentExplosionNum;
+    public float powerCap;
 
     void Start()
     {
@@ -54,6 +57,10 @@ public class Explosion : MonoBehaviour, Item
         {
             float dist = Mathf.Sqrt(Mathf.Pow(ray.transform.position.x-pm.transform.position.x,2)+Mathf.Pow(ray.transform.position.y-pm.transform.position.y,2));
             float power = range - dist;
+            if(power > powerCap)
+            {
+                power = powerCap;
+            }
             Vector2 direction = new Vector2(ray.transform.position.x-pm.transform.position.x,ray.transform.position.y-pm.transform.position.y);
             ray.transform.gameObject.GetComponent<Rigidbody2D>().AddForce(direction.normalized*power*distanceMult);
             if(ray.transform.gameObject.tag == "Enemy")
@@ -65,24 +72,35 @@ public class Explosion : MonoBehaviour, Item
                 ray.transform.gameObject.GetComponent<Boss>().currentHealth -= power*damageMult;
             }
         }
-
-        /*PlayerCombat playerc = GameObject.Find("Player").GetComponent<PlayerCombat>();
-        playerc.gameObject.GetComponent<PlayerMovement>().attacking = true;
-        playerc.gameObject.GetComponent<Animator>().SetBool("bigAttack", true);
-        Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(playerc.attackPoint.position,1.5f,enemyLayers);
-        Collider2D[] hitBoss = Physics2D.OverlapCircleAll(playerc.attackPoint.position,1.5f,bossLayers);
-        foreach(Collider2D enemy in hitEnemies)
+        if(currentExplosionNum < numOfExtraExplosions)
         {
-            enemy.gameObject.GetComponent<Enemy>().Hit(pm.Damage*damageMult,pm.knockback*knockbackMult,pm.gameObject.GetComponent<PlayerMovement>().facingRight);
+            currentExplosionNum++;
+            StartCoroutine(RunItBack());
         }
-        foreach(Collider2D boss in hitBoss)
+        else
         {
-            boss.gameObject.GetComponent<Boss>().Hit(pm.Damage*damageMult);
-        }*/
+            currentExplosionNum = 0;
+        }
+    }
+    IEnumerator RunItBack()
+    {
+        yield return new WaitForSeconds(0.5f);
+        onUse();
     }
     public void UpdateItemStats(int index, float variable)
     {
-        
+        if(index == 0)
+        {
+            damageMult += variable;
+        }
+        else if(index == 1)
+        {
+            range += variable;
+        }
+        else if(index == 2)
+        {
+            numOfExtraExplosions += variable;
+        }
     }
     public Sprite getIcon()
     {

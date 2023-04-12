@@ -90,6 +90,7 @@ public class Bow : MonoBehaviour, Item
                     {
                         arrow = Instantiate(arrows[0], pm.arrowPos.transform.position, Quaternion.identity);
                     }
+                    arrow.GetComponent<SpriteRenderer>().flipX = true;
                     arrow.GetComponent<Rigidbody2D>().AddForce(new Vector2(-bowForce, 0));
                     if (maxChargeReached)
                     {
