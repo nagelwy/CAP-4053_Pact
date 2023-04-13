@@ -161,8 +161,10 @@ MonoBehaviour:
   descString: The horn grants a powerful charging rush which damages enemys in its
     path
   icon: {fileID: 21300000, guid: 6d02b4fee807ec1499a163312d9d5eed, type: 3}
+  chargetime: 1
+  moveSpeed: 0
   CD: 5
-  cooldown: 0
+  damagePerSpeed: 0
 --- !u!4 &12952147
 Transform:
   m_ObjectHideFlags: 0
@@ -1855,6 +1857,14 @@ MonoBehaviour:
   descString: it is a bow?
   icon: {fileID: 21300000, guid: 760392cd71317e4478825a63995b9d75, type: 3}
   CD: 5
+  arrows: []
+  explosive: 0
+  bowForce: 0
+  Damage: 0
+  charging: 0
+  key: 
+  chargeTime: 0
+  maxChargeTime: 0
 --- !u!4 &374272146
 Transform:
   m_ObjectHideFlags: 0
@@ -2127,6 +2137,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 100925305917493443, guid: 8f5df35015f62894ebd82e523555243e, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 6.05
+      objectReference: {fileID: 0}
+    - target: {fileID: 100925305917493443, guid: 8f5df35015f62894ebd82e523555243e, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 10.96
+      objectReference: {fileID: 0}
     - target: {fileID: 2637285569352566547, guid: 8f5df35015f62894ebd82e523555243e, type: 3}
       propertyPath: m_TagString
       value: Wall
@@ -2240,6 +2258,9 @@ MonoBehaviour:
   - {fileID: 12952145}
   - {fileID: 1150337042}
   - {fileID: 374272144}
+  UM: {fileID: 0}
+  index1: 0
+  index2: 0
 --- !u!1 &513746630
 GameObject:
   m_ObjectHideFlags: 0
@@ -4700,6 +4721,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   slider: {fileID: 0}
+  pm: {fileID: 0}
 --- !u!4 &940749042 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6421658094993474245, guid: aa4ae81b71051f74b912383e56a5c2a7, type: 3}
@@ -4808,7 +4830,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 977425528}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 336.48, y: -2.34, z: 0}
+  m_LocalPosition: {x: 338.35, y: -1.66, z: 0}
   m_LocalScale: {x: 2.5659845, y: 2.5659845, z: 2.5659845}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -4851,6 +4873,7 @@ MonoBehaviour:
   currentHealth: 0
   MaxHealth: 10
   Xp: 0
+  Gold: 0
   damage: 1
   knockback: 300
   isFlipped: 0
@@ -5292,6 +5315,7 @@ MonoBehaviour:
   maxHealth: 10
   currentHealth: 0
   enemyxp: 5
+  enemyGold: 0
   firePoint: {fileID: 74453665}
   enemyWeapon: {fileID: 1614832626}
   Projectile: {fileID: 6681655300466261964, guid: e60324c4c1bf2cd4fa2b2610315f233f, type: 3}
@@ -5309,6 +5333,7 @@ MonoBehaviour:
   jumpEnable: 0
   directionLookEnabled: 1
   rangeEnable: 1
+  inRange: 0
 --- !u!50 &1044278204
 Rigidbody2D:
   serializedVersion: 4
@@ -5562,16 +5587,17 @@ MonoBehaviour:
   image: {fileID: 851873413}
   titleString: Big Attack
   descString: This does a very big attack with a large crit!
-  enemyLayers:
-    serializedVersion: 2
-    m_Bits: 128
-  bossLayers:
-    serializedVersion: 2
-    m_Bits: 512
   icon: {fileID: 21300000, guid: fa0cb05d87d658147a2fdc6f50f5bf4e, type: 3}
   CD: 5
+  range: 0
   damageMult: 2
-  knockbackMult: 2
+  distanceMult: 0
+  hittableLayer:
+    serializedVersion: 2
+    m_Bits: 0
+  numOfExtraExplosions: 0
+  currentExplosionNum: 0
+  powerCap: 0
 --- !u!4 &1150337044
 Transform:
   m_ObjectHideFlags: 0
@@ -6602,6 +6628,7 @@ MonoBehaviour:
   maxHealth: 10
   currentHealth: 0
   enemyxp: 5
+  enemyGold: 0
   firePoint: {fileID: 0}
   enemyWeapon: {fileID: 0}
   Projectile: {fileID: 0}
@@ -6619,6 +6646,7 @@ MonoBehaviour:
   jumpEnable: 0
   directionLookEnabled: 1
   rangeEnable: 0
+  inRange: 0
 --- !u!50 &1446493194
 Rigidbody2D:
   serializedVersion: 4
@@ -8272,6 +8300,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   slider: {fileID: 1751136688}
+  pm: {fileID: 0}
 --- !u!114 &1751136688
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8740,6 +8769,7 @@ MonoBehaviour:
   maxHealth: 10
   currentHealth: 0
   enemyxp: 5
+  enemyGold: 0
   firePoint: {fileID: 0}
   enemyWeapon: {fileID: 0}
   Projectile: {fileID: 0}
@@ -8757,6 +8787,7 @@ MonoBehaviour:
   jumpEnable: 1
   directionLookEnabled: 1
   rangeEnable: 0
+  inRange: 0
 --- !u!114 &1776416382
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9599,6 +9630,120 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2126804636}
   m_CullTransparentMesh: 1
+--- !u!1001 &1980389929127043106
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1980389928185667078, guid: cd0a7f26c95a5b147b962d2b249fd5b8, type: 3}
+      propertyPath: m_Name
+      value: jumpBoss
+      objectReference: {fileID: 0}
+    - target: {fileID: 1980389928185667081, guid: cd0a7f26c95a5b147b962d2b249fd5b8, type: 3}
+      propertyPath: m_RootOrder
+      value: 17
+      objectReference: {fileID: 0}
+    - target: {fileID: 1980389928185667081, guid: cd0a7f26c95a5b147b962d2b249fd5b8, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 310.06
+      objectReference: {fileID: 0}
+    - target: {fileID: 1980389928185667081, guid: cd0a7f26c95a5b147b962d2b249fd5b8, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 1980389928185667081, guid: cd0a7f26c95a5b147b962d2b249fd5b8, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -17.205366
+      objectReference: {fileID: 0}
+    - target: {fileID: 1980389928185667081, guid: cd0a7f26c95a5b147b962d2b249fd5b8, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1980389928185667081, guid: cd0a7f26c95a5b147b962d2b249fd5b8, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1980389928185667081, guid: cd0a7f26c95a5b147b962d2b249fd5b8, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1980389928185667081, guid: cd0a7f26c95a5b147b962d2b249fd5b8, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1980389928185667081, guid: cd0a7f26c95a5b147b962d2b249fd5b8, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1980389928185667081, guid: cd0a7f26c95a5b147b962d2b249fd5b8, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1980389928185667081, guid: cd0a7f26c95a5b147b962d2b249fd5b8, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: cd0a7f26c95a5b147b962d2b249fd5b8, type: 3}
+--- !u!1001 &2794555649722653595
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 2794555651046087659, guid: f50e9ef0b53e8c141b645d37d75765ac, type: 3}
+      propertyPath: m_RootOrder
+      value: 18
+      objectReference: {fileID: 0}
+    - target: {fileID: 2794555651046087659, guid: f50e9ef0b53e8c141b645d37d75765ac, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 347.13
+      objectReference: {fileID: 0}
+    - target: {fileID: 2794555651046087659, guid: f50e9ef0b53e8c141b645d37d75765ac, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 6.02
+      objectReference: {fileID: 0}
+    - target: {fileID: 2794555651046087659, guid: f50e9ef0b53e8c141b645d37d75765ac, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -17.941536
+      objectReference: {fileID: 0}
+    - target: {fileID: 2794555651046087659, guid: f50e9ef0b53e8c141b645d37d75765ac, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2794555651046087659, guid: f50e9ef0b53e8c141b645d37d75765ac, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2794555651046087659, guid: f50e9ef0b53e8c141b645d37d75765ac, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2794555651046087659, guid: f50e9ef0b53e8c141b645d37d75765ac, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2794555651046087659, guid: f50e9ef0b53e8c141b645d37d75765ac, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2794555651046087659, guid: f50e9ef0b53e8c141b645d37d75765ac, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2794555651046087659, guid: f50e9ef0b53e8c141b645d37d75765ac, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2794555651046087666, guid: f50e9ef0b53e8c141b645d37d75765ac, type: 3}
+      propertyPath: m_Name
+      value: flyingBoss
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: f50e9ef0b53e8c141b645d37d75765ac, type: 3}
 --- !u!1001 &6421658095395254839
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -9640,11 +9785,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6421658094993474245, guid: aa4ae81b71051f74b912383e56a5c2a7, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 111.86
+      value: 292.35
       objectReference: {fileID: 0}
     - target: {fileID: 6421658094993474245, guid: aa4ae81b71051f74b912383e56a5c2a7, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -2.34
+      value: -2.11
       objectReference: {fileID: 0}
     - target: {fileID: 6421658094993474245, guid: aa4ae81b71051f74b912383e56a5c2a7, type: 3}
       propertyPath: m_LocalPosition.z
