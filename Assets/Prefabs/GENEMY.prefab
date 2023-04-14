@@ -107,14 +107,14 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.25, y: 0.73}
+    oldSize: {x: 0.22727273, y: 0.6636364}
     newSize: {x: 0.64, y: 0.64}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.25, y: 0.73}
+  m_Size: {x: 0.24, y: 0.67}
   m_EdgeRadius: 0
 --- !u!50 &8201155292737472982
 Rigidbody2D:
@@ -129,14 +129,14 @@ Rigidbody2D:
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 1
-  m_LinearDrag: 0
+  m_LinearDrag: 1
   m_AngularDrag: 0.05
   m_GravityScale: 1
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!114 &8201155292737472977
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -149,16 +149,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4c49bd32fc674a24d97f00c838376773, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 0
+  maxHealth: 10
   currentHealth: 0
-  enemyxp: 0
-  enemyGold: 0
+  enemyxp: 5
+  enemyGold: 10
   firePoint: {fileID: 0}
   enemyWeapon: {fileID: 0}
   Projectile: {fileID: 0}
   target: {fileID: 0}
   activateDistance: 50
-  pathUpdateSeconds: 2
+  pathUpdateSeconds: 0.5
   maxRange: 30
   speed: 200
   nextWaypointDistance: 3
@@ -185,7 +185,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerManager: {fileID: 0}
   damage: 2
-  knockback: 0
+  knockback: 100
 --- !u!114 &8201155292737472979
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -39,7 +39,7 @@ public class PlayerManager : MonoBehaviour
     public int gold;
     public float chargeDamage;
     public GameObject deadScreen;
-
+    public float invulnerableTime;
     // Start is called before the first frame update
     void Start()
     {
@@ -105,7 +105,6 @@ public class PlayerManager : MonoBehaviour
             //healthBar.setHealth(currentHealth);
 
             playerMovement.onHit = true;
-
             StartCoroutine(ColorChange());
             StartCoroutine(OnHitDelay(time));
 
@@ -118,7 +117,9 @@ public class PlayerManager : MonoBehaviour
                 rb.AddForce(new Vector2(knockback, knockback / 2));
                 
             }
+            StartCoroutine(Invulnerable()); 
         }
+        
     }
     public void BossDamage(int amount, float knockbackX, float knockbackY, bool right)
     {
@@ -127,7 +128,6 @@ public class PlayerManager : MonoBehaviour
             currentHealth -= amount;
 
             playerMovement.onHit = true;
-
             StartCoroutine(ColorChange());
             StartCoroutine(OnHitDelay(time));
 
@@ -140,6 +140,22 @@ public class PlayerManager : MonoBehaviour
                 rb.AddForce(new Vector2(knockbackX, knockbackY));
                 
             }
+            StartCoroutine(Invulnerable());
+        }
+    }
+    private IEnumerator Invulnerable()
+    {
+        for(int i = 0; i < 12; i++)
+        {
+            if(i != 3 && i != 8)
+            {
+                Physics2D.IgnoreLayerCollision(10,i,true);
+            }
+        }
+        yield return new WaitForSeconds(invulnerableTime);
+        for(int i = 0; i < 12; i++)
+        {
+            Physics2D.IgnoreLayerCollision(10,i,false);
         }
     }
     private IEnumerator ColorChange()

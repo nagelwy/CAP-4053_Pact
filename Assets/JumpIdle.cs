@@ -20,7 +20,6 @@ public class JumpIdle : StateMachineBehaviour
         jgc = animator.GetComponent<jumpGroundedCheck>();
         animator.SetBool("idle", false);
         rb.velocity = new Vector2(0,0);
-        jgc.falling = false;
     }
 
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)

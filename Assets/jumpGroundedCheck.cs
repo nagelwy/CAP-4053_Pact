@@ -5,8 +5,6 @@ using UnityEngine;
 public class jumpGroundedCheck : MonoBehaviour
 {
     public bool grounded;
-    public bool falling;
-    public bool x;
     Rigidbody2D rb;
 
     // Start is called before the first frame update
@@ -18,22 +16,7 @@ public class jumpGroundedCheck : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(!grounded)
-        {
-            if(!x)
-            {
-                x = true;
-                StartCoroutine(delay());
-            }
-        }
-    }
 
-    IEnumerator delay()
-    {
-        yield return new WaitForSeconds(0.5f);
-
-        falling = true;
-        x = false;
     }
 
     void OnCollisionEnter2D(Collision2D floor)

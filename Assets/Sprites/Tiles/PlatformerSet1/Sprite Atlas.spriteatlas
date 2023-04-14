@@ -238,6 +238,7 @@ SpriteAtlas:
   - {fileID: 1792167057, guid: 6d28f55f1b0572546b2632db94416d69, type: 3}
   - {fileID: 1146271693, guid: 6d28f55f1b0572546b2632db94416d69, type: 3}
   - {fileID: -617014043, guid: 6d28f55f1b0572546b2632db94416d69, type: 3}
+  - {fileID: -120479150, guid: 6d28f55f1b0572546b2632db94416d69, type: 3}
   - {fileID: 703563380, guid: 6d28f55f1b0572546b2632db94416d69, type: 3}
   - {fileID: -1998611066, guid: 6d28f55f1b0572546b2632db94416d69, type: 3}
   - {fileID: 1313783221, guid: 6d28f55f1b0572546b2632db94416d69, type: 3}
@@ -513,6 +514,7 @@ SpriteAtlas:
   - main_lev_build_206
   - main_lev_build_31
   - main_lev_build_49
+  - main_lev_build_207
   - main_lev_build_30
   - main_lev_build_204
   - main_lev_build_33
