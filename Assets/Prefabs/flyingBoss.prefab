@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 2794555651046087671}
   - component: {fileID: 2794555651046087664}
   - component: {fileID: 2794555651046087665}
+  - component: {fileID: 2805172378353774989}
   m_Layer: 0
   m_Name: flyingBoss
   m_TagString: Untagged
@@ -78,7 +79,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 1636060377, guid: 0212b9ce16b951742bf33dc6f578920e, type: 3}
+  m_Sprite: {fileID: -1527634962, guid: e058a9f191f74f94c87fdba11b3e988c, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -181,3 +182,18 @@ MonoBehaviour:
   knockback: 0
   isFlipped: 0
   disableBox: 0
+--- !u!111 &2805172378353774989
+Animation:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2794555651046087666}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Animation: {fileID: 0}
+  m_Animations: []
+  m_WrapMode: 0
+  m_PlayAutomatically: 1
+  m_AnimatePhysics: 0
+  m_CullingType: 0
