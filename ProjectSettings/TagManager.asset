@@ -21,7 +21,7 @@ TagManager:
   - Boss
   - Player
   - Projectile
-  - 
+  - Decorations
   - 
   - 
   - 
@@ -47,4 +47,7 @@ TagManager:
     locked: 0
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Decorations
+    uniqueID: 1511615229
     locked: 0
