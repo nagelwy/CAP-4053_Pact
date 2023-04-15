@@ -7,6 +7,7 @@ public class Scroll : MonoBehaviour
     public int index;
     ItemManager im;
     SelectionManager gsm;
+    public bool pact;
 
     // Start is called before the first frame update
     void Start()
@@ -22,8 +23,15 @@ public class Scroll : MonoBehaviour
     }
     public void endScroll()
     {
-        im.updateStat(index);
-        gsm.onClick();
+        if(!pact)
+        {
+            im.updateStat(index);
+            gsm.onClick();
+        }
+        else
+        {
+            gsm.onClick();
+        }
 
     }
 }

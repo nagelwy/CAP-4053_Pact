@@ -167,7 +167,7 @@ MonoBehaviour:
   jumpCheckOffset: 0.1
   fireRate: 0
   followEnable: 1
-  jumpEnable: 0
+  jumpEnable: 1
   directionLookEnabled: 1
   rangeEnable: 0
   inRange: 0
