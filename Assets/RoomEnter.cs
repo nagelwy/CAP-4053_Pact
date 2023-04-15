@@ -31,6 +31,10 @@ public class RoomEnter : MonoBehaviour
             {
                 d.SetActive(false);
             }
+            if(bossRoom)
+            {
+                GameObject.Find("RoomSpawnManager").GetComponent<FloorGenerator>().unspawn();
+            }
         }
     }
     void OnTriggerEnter2D(Collider2D col)

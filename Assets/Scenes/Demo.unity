@@ -1068,6 +1068,7 @@ Transform:
   m_Children:
   - {fileID: 34945510}
   - {fileID: 1169310186}
+  - {fileID: 1646419927}
   m_Father: {fileID: 391829666}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1344,8 +1345,16 @@ MonoBehaviour:
   floor1Bosses:
   - {fileID: 3397139722293918788, guid: 8f5df35015f62894ebd82e523555243e, type: 3}
   - {fileID: 3397139722293918788, guid: b3dba6cdd4001c247b37b960528401f7, type: 3}
+  floor2Rooms:
+  - {fileID: 9171994825728162717, guid: 319133b0507596343b73983fc787ebdf, type: 3}
+  floor2Bosses:
+  - {fileID: 9164691393108235878, guid: 4498c39df904bfa44a4472ff0920eb09, type: 3}
   shopRoom: {fileID: 3835853716263282620, guid: 996b39a7fe86c874a896b77b6f425af5, type: 3}
+  floorIndex: 0
   floor1Size: 2
+  floor2Size: 2
+  spawnRoom: {fileID: 262845086}
+  spawnedRooms: []
   currentRoom: {fileID: 262845086}
   ShopUI: {fileID: 2121044918}
 --- !u!4 &201184161
@@ -2140,14 +2149,18 @@ MonoBehaviour:
   hornUpgrades:
   - {fileID: 1169310185}
   - {fileID: 34945509}
+  - {fileID: 1646419926}
   explosionUpgrades:
   - {fileID: 464395770}
   - {fileID: 911853433}
   - {fileID: 1417024522}
+  - {fileID: 1282334040}
   bowUpgrades:
   - {fileID: 687435858}
   - {fileID: 1806975033}
   - {fileID: 1154612533}
+  - {fileID: 677539749}
+  - {fileID: 458716517}
   UO: {fileID: 69092133}
   bd: {fileID: 687435860}
 --- !u!4 &391829666
@@ -2377,6 +2390,54 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!1 &458716517
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 458716518}
+  - component: {fileID: 458716519}
+  m_Layer: 0
+  m_Name: DrawbackTime
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &458716518
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 458716517}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1394567094}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &458716519
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 458716517}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cb7cf375c194e5848b9858e8be82fd8f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemIndex: 2
+  variable: 0.8
+  Title: Bow drawback time
+  Desc: decreases the time to max chage bow shot by 20%
 --- !u!1 &459524557
 GameObject:
   m_ObjectHideFlags: 0
@@ -3813,6 +3874,54 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 662573994}
   m_CullTransparentMesh: 1
+--- !u!1 &677539749
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 677539750}
+  - component: {fileID: 677539751}
+  m_Layer: 0
+  m_Name: CDR
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &677539750
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 677539749}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1394567094}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &677539751
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 677539749}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ad3fed5501221da4381cb8d5534d9539, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemIndex: 2
+  CDRDown: 0.9
+  Title: Bow Cooldown Reduction
+  Desc: Reduces cooldown of bow ability by 10%
 --- !u!1 &687435858
 GameObject:
   m_ObjectHideFlags: 0
@@ -5614,6 +5723,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemIndex: 2
+  radius: 5
   Title: Bow Explosion
   Desc: Increase radius of arrow damage
 --- !u!1 &1157296637
@@ -7471,6 +7581,54 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1267586918}
   m_CullTransparentMesh: 1
+--- !u!1 &1282334040
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1282334041}
+  - component: {fileID: 1282334042}
+  m_Layer: 0
+  m_Name: CDR
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1282334041
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1282334040}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1863666786}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1282334042
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1282334040}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ca84d2646076bbc44bd1de84df8f44d8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemIndex: 1
+  CDRDown: 0.9
+  Title: Explosion Cooldown Reduction
+  Desc: Reduced Cooldown by 10%
 --- !u!1001 &1294054236
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -8041,6 +8199,8 @@ Transform:
   - {fileID: 687435859}
   - {fileID: 1806975034}
   - {fileID: 1154612534}
+  - {fileID: 677539750}
+  - {fileID: 458716518}
   m_Father: {fileID: 391829666}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -8878,7 +9038,9 @@ MonoBehaviour:
   CD: 5
   arrows:
   - {fileID: 7154526471165666986, guid: 467a3d376893fdd46832596efd2b94bb, type: 3}
+  - {fileID: 7154526471165666986, guid: 641fbe3d7f73a754f97edf58d5a726b7, type: 3}
   explosive: 0
+  radius: 0
   bowForce: 500
   Damage: 2
   charging: 0
@@ -8900,6 +9062,54 @@ Transform:
   m_Father: {fileID: 171047962}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1646419926
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1646419927}
+  - component: {fileID: 1646419928}
+  m_Layer: 0
+  m_Name: CDR
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1646419927
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1646419926}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 130659047}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1646419928
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1646419926}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e129b1b44ee0de42b9ceed57d21ce4d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemIndex: 0
+  CDRDown: 0.9
+  Title: Horn of the Minotaur Cooldown Reduction
+  Desc: Reduces horn cooldown by 10%
 --- !u!1 &1668053306
 GameObject:
   m_ObjectHideFlags: 0
@@ -9900,6 +10110,7 @@ Transform:
   - {fileID: 464395771}
   - {fileID: 911853434}
   - {fileID: 1417024524}
+  - {fileID: 1282334041}
   m_Father: {fileID: 391829666}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

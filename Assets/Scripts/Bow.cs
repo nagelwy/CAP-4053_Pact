@@ -18,6 +18,7 @@ public class Bow : MonoBehaviour, Item
     public float CD;
     public GameObject[] arrows;
     public bool explosive;
+    public float radius;
     public float bowForce;
     public float Damage;
     bool ab1or2;
@@ -64,6 +65,7 @@ public class Bow : MonoBehaviour, Item
                     if (explosive)
                     {
                         arrow = Instantiate(arrows[1], pm.arrowPos.transform.position, Quaternion.identity);
+                        arrow.GetComponent<Arrow>().radius = radius;
                     }
                     else
                     {
@@ -85,6 +87,7 @@ public class Bow : MonoBehaviour, Item
                     if (explosive)
                     {
                         arrow = Instantiate(arrows[1], pm.arrowPos.transform.position, Quaternion.identity);
+                        arrow.GetComponent<Arrow>().radius = radius;
                     }
                     else
                     {
@@ -150,6 +153,15 @@ public class Bow : MonoBehaviour, Item
         else if(index == 2)
         {
             explosive = true;
+            radius += variable;
+        }
+        else if(index == 3)
+        {
+            CD *= variable;
+        }
+        else if(index == 4)
+        {
+            maxChargeTime *= variable;
         }
     }
     public Sprite getIcon()

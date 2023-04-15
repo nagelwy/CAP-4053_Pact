@@ -56,7 +56,7 @@ public class Boss : MonoBehaviour
         target.gameObject.GetComponent<PlayerManager>().xp += Xp;
         target.gameObject.GetComponent<PlayerManager>().gold += Gold;
         //Die Animation
-        gameObject.SetActive(false); // fix this to fully despawn enemy.
+        Destroy(gameObject);
     }
     private void OnCollisionEnter2D(Collision2D collision) 
     {

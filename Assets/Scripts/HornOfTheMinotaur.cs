@@ -94,7 +94,10 @@ public class HornOfTheMinotaur : MonoBehaviour, Item
         {
             damagePerSpeed += variable;
         }
-
+        else if(index == 2)
+        {
+            CD *= variable;
+        }
     }
     public void onUse()
     {

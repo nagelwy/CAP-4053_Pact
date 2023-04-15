@@ -101,6 +101,10 @@ public class Explosion : MonoBehaviour, Item
         {
             numOfExtraExplosions += variable;
         }
+        else if(index == 3)
+        {
+            CD *= variable;
+        }
     }
     public Sprite getIcon()
     {

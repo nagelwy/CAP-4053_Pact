@@ -3,17 +3,16 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class BowExplosion : MonoBehaviour,Upgrade
+public class HornCDR : MonoBehaviour,Upgrade
 {
     public int itemIndex;
-    public float radius;
+    public float CDRDown;
     public string Title;
     public string Desc;
-
     public void onEquip()
     {
-        GameObject bow = gameObject.GetComponentInParent<UpgradeManager>().getItem(itemIndex);
-        bow.GetComponent<Item>().UpdateItemStats(2,radius);
+        GameObject exp = gameObject.GetComponentInParent<UpgradeManager>().getItem(itemIndex);
+        exp.GetComponent<Item>().UpdateItemStats(2,CDRDown);
     }
     public void fillUI(Text title, Text desc)
     {
