@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 8201155292737472977}
   - component: {fileID: 8201155292737472976}
   - component: {fileID: 8201155292737472979}
-  - component: {fileID: 8201155292737472986}
+  - component: {fileID: 456817199222928883}
   m_Layer: 7
   m_Name: GENEMY_Fast
   m_TagString: Enemy
@@ -136,7 +136,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!114 &8201155292737472977
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -160,7 +160,7 @@ MonoBehaviour:
   activateDistance: 20
   pathUpdateSeconds: 0.5
   maxRange: 30
-  speed: 300
+  speed: 600
   nextWaypointDistance: 3
   jumpNodeHeightRequirement: 0.8
   jumpModifier: 0.3
@@ -214,7 +214,7 @@ MonoBehaviour:
   tagPenalties: 0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
   graphMask:
     value: 2
---- !u!95 &8201155292737472986
+--- !u!95 &456817199222928883
 Animator:
   serializedVersion: 5
   m_ObjectHideFlags: 0
@@ -224,7 +224,7 @@ Animator:
   m_GameObject: {fileID: 8201155292737472978}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 564465fd1d55184428d5b28a1e09223e, type: 2}
+  m_Controller: {fileID: 0}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0

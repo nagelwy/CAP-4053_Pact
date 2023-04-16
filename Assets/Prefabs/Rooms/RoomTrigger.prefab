@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 6576594471356252102}
   - component: {fileID: 6143577533917472069}
   - component: {fileID: 8588099922792993809}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: RoomTrigger
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -95,7 +95,7 @@ GameObject:
   - component: {fileID: 6145519930071440796}
   - component: {fileID: 3810623045160322935}
   - component: {fileID: 3930335756670437421}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Door1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -206,7 +206,7 @@ GameObject:
   - component: {fileID: 3403693592462089336}
   - component: {fileID: 8361675271683898000}
   - component: {fileID: 8728988013247673126}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Door2
   m_TagString: Untagged
   m_Icon: {fileID: 0}

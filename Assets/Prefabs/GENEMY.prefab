@@ -160,7 +160,7 @@ MonoBehaviour:
   activateDistance: 20
   pathUpdateSeconds: 0.5
   maxRange: 30
-  speed: 200
+  speed: 300
   nextWaypointDistance: 3
   jumpNodeHeightRequirement: 0.8
   jumpModifier: 0.3
