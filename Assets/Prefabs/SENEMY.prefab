@@ -185,7 +185,7 @@ MonoBehaviour:
   maxHealth: 10
   currentHealth: 0
   enemyxp: 5
-  enemyGold: 10
+  enemyGold: 2
   firePoint: {fileID: 2363219947037792191}
   enemyWeapon: {fileID: 2363219946643304446}
   Projectile: {fileID: 6681655300466261964, guid: e60324c4c1bf2cd4fa2b2610315f233f, type: 3}
@@ -217,8 +217,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerManager: {fileID: 0}
-  damage: 0
-  knockback: 0
+  damage: 1
+  knockback: 1
 --- !u!114 &2363219946687648829
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -31,8 +31,8 @@ Transform:
   m_GameObject: {fileID: 1302037241524178766}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -19.47, y: 1.35, z: 0}
-  m_LocalScale: {x: 1.9757069, y: 2.3372395, z: 1}
-  m_ConstrainProportionsScale: 1
+  m_LocalScale: {x: 1.9999999, y: 2, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -143,10 +143,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentHealth: 0
-  MaxHealth: 10
-  Xp: 0
-  Gold: 0
-  damage: 1
+  MaxHealth: 50
+  Xp: 10
+  Gold: 4
+  damage: 2
   knockback: 300
   isFlipped: 0
   disableBox: 0
@@ -163,18 +163,18 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0.0020639896, y: -0.0020636916}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1.92, y: 1.2}
+    oldSize: {x: 1.18, y: 0.91}
     newSize: {x: 0.08, y: 0.09}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1.92, y: 1.2}
+  m_Size: {x: 1.1894352, y: 0.8491638}
   m_EdgeRadius: 0
 --- !u!114 &7609197997793099452
 MonoBehaviour:
@@ -189,5 +189,3 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   grounded: 0
-  falling: 0
-  x: 0

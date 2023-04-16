@@ -152,12 +152,12 @@ MonoBehaviour:
   maxHealth: 10
   currentHealth: 0
   enemyxp: 5
-  enemyGold: 10
+  enemyGold: 2
   firePoint: {fileID: 0}
   enemyWeapon: {fileID: 0}
   Projectile: {fileID: 0}
   target: {fileID: 0}
-  activateDistance: 50
+  activateDistance: 20
   pathUpdateSeconds: 0.5
   maxRange: 30
   speed: 200

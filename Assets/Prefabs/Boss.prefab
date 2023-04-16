@@ -144,10 +144,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentHealth: 0
-  MaxHealth: 10
+  MaxHealth: 50
   Xp: 10
-  Gold: 10
-  damage: 1
+  Gold: 4
+  damage: 2
   knockback: 300
   isFlipped: 0
   disableBox: 0
@@ -163,7 +163,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e20cc84ac8aa0e04183cdf0c6c47f80b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 1
+  damage: 2
   knockbackX: 300
   knockbackY: 1000
   attackOffset: {x: 3, y: 1, z: 0}

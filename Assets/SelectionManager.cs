@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 public class SelectionManager : MonoBehaviour
 {
+    public GameObject background;
     public GameObject ItemSelect;
     public GameObject PactSelect;
     public GameObject Bar;
@@ -17,6 +18,7 @@ public class SelectionManager : MonoBehaviour
     {
         ItemSelect.SetActive(true);
         pm = GameObject.Find("Player").GetComponent<PlayerManager>();
+        background.SetActive(true);
     }
     public void onClick()
     {
@@ -37,6 +39,7 @@ public class SelectionManager : MonoBehaviour
             icons.SetActive(true);
             pm.UpdateIcons();
             Bar.SetActive(true);
+            background.SetActive(false);
         }
     }
 
