@@ -185,7 +185,7 @@ MonoBehaviour:
   maxHealth: 10
   currentHealth: 0
   enemyxp: 5
-  enemyGold: 2
+  enemyGold: 3
   firePoint: {fileID: 2363219947037792191}
   enemyWeapon: {fileID: 2363219946643304446}
   Projectile: {fileID: 6681655300466261964, guid: e60324c4c1bf2cd4fa2b2610315f233f, type: 3}

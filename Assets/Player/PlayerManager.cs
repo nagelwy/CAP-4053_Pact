@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 public class PlayerManager : MonoBehaviour
 {
+    public ParticleSystem explode;
     public PlayerCombat playerCombat;
     public PlayerMovement playerMovement;
     public GameObject arrowPos;
@@ -20,6 +21,10 @@ public class PlayerManager : MonoBehaviour
     public Item ability2;
     public float knockback;
     public Image[] icons;
+    public GameObject cd1;
+    public GameObject cd2;
+    public Text cd1t;
+    public Text cd2t;
     public int Level;
     
     public GameObject levelButton;
@@ -56,6 +61,7 @@ public class PlayerManager : MonoBehaviour
     {
         if(ab1t > Ability1CD)
         {
+            cd1.SetActive(false);
             if(Input.GetAxis("Ability 1") != 0)
             {
                 ability1.onUse();
@@ -66,19 +72,27 @@ public class PlayerManager : MonoBehaviour
         else
         {
             ab1t += Time.deltaTime;
+            cd1.SetActive(true);
+            int cdNum1 = (int)Ability1CD-(int)ab1t;
+            cd1t.text = cdNum1.ToString();
         }
         if(ab2t > Ability2CD)
         {
+            cd2.SetActive(false);
             if(Input.GetAxis("Ability 2") != 0)
             {
                 ability2.onUse();
                 Ability2CD = ability2.getCD();
                 ab2t = 0;
+                
             }
         }
         else
         {
             ab2t += Time.deltaTime;
+            cd2.SetActive(true);
+            int cdNum2 = (int)Ability2CD-(int)ab2t;
+            cd2t.text = cdNum2.ToString();
         }
 
         if ( xp >= xpToLevel)

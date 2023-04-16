@@ -108,6 +108,7 @@ public class Bow : MonoBehaviour, Item
                 maxChargeReached = false;
                 pm.MoveSpeed *= 2;
                 playerms = false;
+                pm.gameObject.GetComponent<Animator>().SetBool("Bow",false);
             }
             
         }
@@ -139,6 +140,7 @@ public class Bow : MonoBehaviour, Item
         //bow fire animation
         charging = true;
         chargeTime = 0;
+        pm.gameObject.GetComponent<Animator>().SetBool("Bow",true);
     }
     public void UpdateItemStats(int index, float variable)
     {

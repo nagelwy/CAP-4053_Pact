@@ -16,7 +16,15 @@ public class jumpGroundedCheck : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        if(rb.velocity.x < 0f)
+            {
+                gameObject.transform.localScale = new Vector3(2,2,1);
+                
+            }
+            else if(rb.velocity.x> 0f)
+            {
+                gameObject.transform.localScale = new Vector3(-2,2,1);
+            }
     }
 
     void OnCollisionEnter2D(Collision2D floor)

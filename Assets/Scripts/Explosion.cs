@@ -52,6 +52,7 @@ public class Explosion : MonoBehaviour, Item
     public void onUse()
     {
         Debug.Log("BigAttack");
+        pm.explode.Play();
         RaycastHit2D[] enemiesHit = Physics2D.CircleCastAll(pm.gameObject.transform.position,range,new Vector2(0,0),0,hittableLayer);
         foreach(RaycastHit2D ray in enemiesHit)
         {
