@@ -2452,7 +2452,7 @@ GameObject:
   - component: {fileID: 309457864716262881}
   - component: {fileID: 6366834329057290632}
   - component: {fileID: 8209857060465643254}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Tilemap_floor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -20622,7 +20622,7 @@ GameObject:
   - component: {fileID: 6367115102606831654}
   - component: {fileID: 4103746213607400227}
   - component: {fileID: 5767278726528740471}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Tilemap_wall
   m_TagString: Untagged
   m_Icon: {fileID: 0}

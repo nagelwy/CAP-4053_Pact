@@ -34,7 +34,7 @@ public class HornOfTheMinotaur : MonoBehaviour, Item
         displayInfo();
 
     }
-    void Update()
+    void FixedUpdate()
     {
         if(charging)
         {
