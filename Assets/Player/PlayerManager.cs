@@ -45,6 +45,7 @@ public class PlayerManager : MonoBehaviour
     public float chargeDamage;
     public GameObject deadScreen;
     public float invulnerableTime;
+    public float enemyspeedmult = 1;
     // Start is called before the first frame update
     void Start()
     {

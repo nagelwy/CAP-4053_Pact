@@ -4620,7 +4620,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6421658094993474245, guid: aa4ae81b71051f74b912383e56a5c2a7, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -229.58
+      value: -90.44
       objectReference: {fileID: 0}
     - target: {fileID: 6421658094993474245, guid: aa4ae81b71051f74b912383e56a5c2a7, type: 3}
       propertyPath: m_LocalPosition.y
@@ -17472,10 +17472,10 @@ MonoBehaviour:
   Title: {fileID: 398444514}
   Desc: {fileID: 724523839}
   button: {fileID: 2004603187}
-  titleString: Gentle Giant
-  descString: Increases Health at the cost of damage
-  healthMult: 2
-  damageDiv: 2
+  titleString: Speed Demon
+  descString: Player moves twice as fast, but so do the enemies.
+  playerMsMult: 2
+  enemyMsMult: 2
   icon: {fileID: 21300000, guid: ecd3f426983657f4eb9eb2f643af3e0f, type: 3}
 --- !u!114 &2004603187
 MonoBehaviour:
