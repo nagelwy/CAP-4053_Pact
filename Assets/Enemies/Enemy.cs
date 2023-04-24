@@ -165,7 +165,7 @@ public class Enemy : MonoBehaviour
         // Movement
         if(!inRange)
         {
-            rb.AddForce(force);
+            rb.AddForce(force * target.GetComponent<PlayerManager>().enemyspeedmult);
         }
 
         // Next point

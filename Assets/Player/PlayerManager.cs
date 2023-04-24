@@ -45,6 +45,7 @@ public class PlayerManager : MonoBehaviour
     public float chargeDamage;
     public GameObject deadScreen;
     public float invulnerableTime;
+    public float enemyspeedmult = 1;
     // Start is called before the first frame update
     void Start()
     {
@@ -57,7 +58,7 @@ public class PlayerManager : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         if(ab1t > Ability1CD)
         {
@@ -159,6 +160,7 @@ public class PlayerManager : MonoBehaviour
     }
     private IEnumerator Invulnerable()
     {
+        /*
         for(int i = 0; i < 12; i++)
         {
             if(i != 3 && i != 8)
@@ -171,6 +173,8 @@ public class PlayerManager : MonoBehaviour
         {
             Physics2D.IgnoreLayerCollision(10,i,false);
         }
+        */
+        yield return new WaitForSeconds(invulnerableTime);
     }
     private IEnumerator ColorChange()
     {
