@@ -59,6 +59,7 @@ public class Bow : MonoBehaviour, Item
             
             if (Input.GetAxis(key) == 0)
             {
+                pm.bowcharge = true;
                 if (pm.gameObject.GetComponent<PlayerMovement>().facingRight)
                 {
                     GameObject arrow;
@@ -109,8 +110,12 @@ public class Bow : MonoBehaviour, Item
                 pm.MoveSpeed *= 2;
                 playerms = false;
                 pm.gameObject.GetComponent<Animator>().SetBool("Bow",false);
-            }
-            
+            }          
+        }
+        else
+        {
+            pm = GameObject.Find("Player").GetComponent<PlayerManager>();
+            pm.bowcharge = false;
         }
     }
     public void displayInfo()

@@ -16,6 +16,7 @@ public class FloorGenerator : MonoBehaviour
     public List<GameObject> spawnedRooms;
     public Room currentRoom;
     public GameObject ShopUI; 
+    public GameObject endScreen;
     
     // Start is called before the first frame update
     void Start()
@@ -83,5 +84,10 @@ public class FloorGenerator : MonoBehaviour
     void Update()
     {
         
+    }
+
+    public void endgame()
+    {
+        endScreen.SetActive(true);
     }
 }

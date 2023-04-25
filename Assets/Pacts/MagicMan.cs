@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class TankyTurtle : MonoBehaviour, Pact
+public class MagicMan : MonoBehaviour, Pact
 {
     public GameObject PactSelect;
     public Text Title;
@@ -12,9 +12,9 @@ public class TankyTurtle : MonoBehaviour, Pact
     public string titleString;
     public string descString;
     private PlayerManager pm;
-    public float healthMult;
+    public float abilityCDMult;
     public float attackSpeedDiv;
-    public float moveSpeedDiv;
+
     public Sprite icon;
 
     void Start()
@@ -29,10 +29,8 @@ public class TankyTurtle : MonoBehaviour, Pact
     public void UpdateStats()
     {
         pm = GameObject.Find("Player").GetComponent<PlayerManager>();
-        pm.MaxHealth *= healthMult;
-        pm.currentHealth = pm.MaxHealth;
-        pm.AttackTime *= attackSpeedDiv;
-        pm.MoveSpeed /= moveSpeedDiv;
+        pm.abilitydivnum = abilityCDMult;
+        pm.AttackTime *=attackSpeedDiv;
         pm.pact = this;
     }
     public Sprite getIcon()

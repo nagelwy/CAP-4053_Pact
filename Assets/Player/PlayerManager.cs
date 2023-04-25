@@ -41,11 +41,13 @@ public class PlayerManager : MonoBehaviour
     public float ab1t;
     public float Ability2CD;
     public float ab2t;
+    public float abilitydivnum;
     public int gold;
     public float chargeDamage;
     public GameObject deadScreen;
     public float invulnerableTime;
     public float enemyspeedmult = 1;
+    public bool bowcharge;
     // Start is called before the first frame update
     void Start()
     {
@@ -65,9 +67,13 @@ public class PlayerManager : MonoBehaviour
             cd1.SetActive(false);
             if(Input.GetAxis("Ability 1") != 0)
             {
-                ability1.onUse();
-                Ability1CD = ability1.getCD();
-                ab1t = 0;
+                if(!bowcharge)
+                {
+                    ability1.onUse();
+                    Ability1CD = ability1.getCD();
+                    Ability1CD/=abilitydivnum;
+                    ab1t = 0;
+                }
             }
         }
         else
@@ -82,10 +88,13 @@ public class PlayerManager : MonoBehaviour
             cd2.SetActive(false);
             if(Input.GetAxis("Ability 2") != 0)
             {
-                ability2.onUse();
-                Ability2CD = ability2.getCD();
-                ab2t = 0;
-                
+                if(!bowcharge)
+                {
+                    ability2.onUse();
+                    Ability2CD = ability2.getCD();
+                    Ability2CD/=abilitydivnum;
+                    ab2t = 0;
+                }
             }
         }
         else
