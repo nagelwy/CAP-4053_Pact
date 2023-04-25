@@ -9,3 +9,5 @@ This is the repository for all files related to the videogame "Pact".
   - Santiago Posse
   - Wyatt Nagel
   
+## Assets Used
+  - Hand Painted Platformer - Dungeon by YOGE
