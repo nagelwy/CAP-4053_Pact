@@ -4660,7 +4660,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2090350842127703545, guid: aa4ae81b71051f74b912383e56a5c2a7, type: 3}
       propertyPath: m_Volume
-      value: 0.65
+      value: 0.025
       objectReference: {fileID: 0}
     - target: {fileID: 3077618702917246300, guid: aa4ae81b71051f74b912383e56a5c2a7, type: 3}
       propertyPath: jumpPower
