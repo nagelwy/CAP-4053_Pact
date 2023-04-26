@@ -109,6 +109,7 @@ public class PlayerManager : MonoBehaviour
         {
             Debug.Log("Level up!");
             Level++;
+            xpToLevel+=5;
             levelButton.SetActive(true);
             levelButton.GetComponent<levelButton>().numOfUpgrades++;
             xp = 0;
