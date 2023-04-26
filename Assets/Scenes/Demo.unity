@@ -1461,7 +1461,7 @@ MonoBehaviour:
   descString: Decreased Ability Cooldowns, at the cost of lowering attack speed.
   abilityCDMult: 2
   attackSpeedDiv: 2
-  icon: {fileID: 1636060377, guid: 0212b9ce16b951742bf33dc6f578920e, type: 3}
+  icon: {fileID: 21300000, guid: 61dd861c32a82524d936e25bbaee5368, type: 3}
 --- !u!1 &129917599
 GameObject:
   m_ObjectHideFlags: 0
@@ -1728,7 +1728,6 @@ MonoBehaviour:
   - {fileID: 5111747167192762875, guid: d64c6ff1f02f8dd4fa82f5d772180bcc, type: 3}
   floor1Bosses:
   - {fileID: 3397139722293918788, guid: 8f5df35015f62894ebd82e523555243e, type: 3}
-  - {fileID: 3397139722293918788, guid: b3dba6cdd4001c247b37b960528401f7, type: 3}
   floor2Rooms:
   - {fileID: 9171994825728162717, guid: 319133b0507596343b73983fc787ebdf, type: 3}
   - {fileID: 207424277171525274, guid: b41cadc2aaf2e304e80ddfb6dff7c7b8, type: 3}
@@ -1736,10 +1735,18 @@ MonoBehaviour:
   - {fileID: 5375750710887229163, guid: 482009795fa427c4b8d30fe8229cc7ae, type: 3}
   floor2Bosses:
   - {fileID: 9164691393108235878, guid: 4498c39df904bfa44a4472ff0920eb09, type: 3}
+  floor3Rooms:
+  - {fileID: 7049829849526201873, guid: 57d9d5f05df4f9140afa07ea96861214, type: 3}
+  - {fileID: 4905577521784152718, guid: 267823436ecc41f459750371d40269ff, type: 3}
+  - {fileID: 5544828547501556031, guid: c0cd09e3986e68746ba2d32d18b2207c, type: 3}
+  - {fileID: 6062917574462101130, guid: 9f2ff93305f3bba4dbe6d91d052d3d82, type: 3}
+  floor3Bosses:
+  - {fileID: 8931446805184341874, guid: 20228da289dfdbd4987096904664f32f, type: 3}
   shopRoom: {fileID: 3835853716263282620, guid: 996b39a7fe86c874a896b77b6f425af5, type: 3}
   floorIndex: 0
   floor1Size: 2
   floor2Size: 2
+  floor3Size: 2
   spawnRoom: {fileID: 262845086}
   spawnedRooms: []
   currentRoom: {fileID: 262845086}
@@ -6983,7 +6990,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemIndex: 0
-  variable: 5
+  variable: 10
   Title: Horn of the Minotaur MoveSpeed Up
   Desc: Increases the movespeed of the horn of the minotaur active
 --- !u!1 &1178376418
@@ -18067,7 +18074,7 @@ MonoBehaviour:
   descString: Player moves twice as fast, but so do the enemies.
   playerMsMult: 2
   enemyMsMult: 2
-  icon: {fileID: 21300000, guid: ecd3f426983657f4eb9eb2f643af3e0f, type: 3}
+  icon: {fileID: 21300000, guid: d355f60201a709c4aa009f6f10503748, type: 3}
 --- !u!114 &2004603187
 MonoBehaviour:
   m_ObjectHideFlags: 0

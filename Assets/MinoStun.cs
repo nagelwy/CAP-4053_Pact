@@ -10,6 +10,7 @@ public class MinoStun : StateMachineBehaviour
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
+        StunTime *= 0.9f;
         timer = StunTime;
         boss = animator.GetComponent<Boss>();
         boss.disableBox = false;

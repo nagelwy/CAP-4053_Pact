@@ -143,10 +143,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentHealth: 0
-  MaxHealth: 50
+  MaxHealth: 75
   Xp: 10
   Gold: 4
-  damage: 2
+  damage: 4
   knockback: 300
   isFlipped: 0
   disableBox: 0

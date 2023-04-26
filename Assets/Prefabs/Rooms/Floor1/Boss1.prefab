@@ -24589,6 +24589,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: RoomTrigger
       objectReference: {fileID: 0}
+    - target: {fileID: 4644722520263426319, guid: db5352e98af15ad4a885a7ed79d94112, type: 3}
+      propertyPath: m_TagString
+      value: Wall
+      objectReference: {fileID: 0}
     - target: {fileID: 6143577533917472069, guid: db5352e98af15ad4a885a7ed79d94112, type: 3}
       propertyPath: b
       value: 
@@ -24661,9 +24665,17 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7268964462803537650, guid: db5352e98af15ad4a885a7ed79d94112, type: 3}
+      propertyPath: m_TagString
+      value: Wall
+      objectReference: {fileID: 0}
     - target: {fileID: 9086829489098328476, guid: db5352e98af15ad4a885a7ed79d94112, type: 3}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9086829489098328476, guid: db5352e98af15ad4a885a7ed79d94112, type: 3}
+      propertyPath: m_TagString
+      value: Wall
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: db5352e98af15ad4a885a7ed79d94112, type: 3}

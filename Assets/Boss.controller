@@ -191,7 +191,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 05dc43a034fa9f64b90a4ab7f5838be7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  StunTime: 5
+  StunTime: 4.5
 --- !u!1101 &-5130736282974007271
 AnimatorStateTransition:
   m_ObjectHideFlags: 1
@@ -474,7 +474,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bb51fbd2e8b93bd4fab7101f5ad58b05, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  accelSpeed: 2
+  accelSpeed: 4
   maxVelocityBase: 500
 --- !u!1102 &2248774035777310367
 AnimatorState:
@@ -616,7 +616,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 318de8cbd9ccda84d99e5cca208bfdbc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  accelSpeed: 2
+  accelSpeed: 4
   maxVelocityBase: 500
 --- !u!114 &7917135203583228010
 MonoBehaviour:
@@ -672,7 +672,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 05dc43a034fa9f64b90a4ab7f5838be7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  StunTime: 5
+  StunTime: 4.5
 --- !u!1101 &8969391183937121507
 AnimatorStateTransition:
   m_ObjectHideFlags: 1

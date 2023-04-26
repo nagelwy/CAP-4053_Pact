@@ -140,7 +140,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4c49bd32fc674a24d97f00c838376773, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 50
+  maxHealth: 100
   currentHealth: 0
   enemyxp: 10
   enemyGold: 4
@@ -175,7 +175,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerManager: {fileID: 0}
-  damage: 2
+  damage: 6
   knockback: 100
 --- !u!114 &1688703458547053823
 MonoBehaviour:

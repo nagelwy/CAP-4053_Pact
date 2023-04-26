@@ -23,6 +23,7 @@ public class MinoIdle : StateMachineBehaviour
         if(boss.currentHealth <= boss.MaxHealth/2)
         {
             animator.SetTrigger("Enrage");
+            boss.gameObject.GetComponent<BoxCollider2D>().size = new Vector2(1f,0.8f);
         }
         if(time <= 0)
         {
