@@ -46,8 +46,10 @@ public class PlayerManager : MonoBehaviour
     public float chargeDamage;
     public GameObject deadScreen;
     public float invulnerableTime;
+    public float invtimer;
     public float enemyspeedmult = 1;
     public bool bowcharge;
+    public bool inv;
     // Start is called before the first frame update
     void Start()
     {
@@ -121,14 +123,23 @@ public class PlayerManager : MonoBehaviour
             deadScreen.GetComponent<Animator>().SetTrigger("Dead");
         }
 
+        if(invtimer > 0)
+        {
+            invtimer -= Time.deltaTime;
+        }
+        else
+        {
+            inv = false;
+        }
     }
     public void TakeDamage(int amount, int knockback, bool right)
     {
-        if(!charging)
+        if(!charging && !inv)
         {
             currentHealth -= amount;
             //healthBar.setHealth(currentHealth);
-
+            inv = true;
+            invtimer = invulnerableTime;
             playerMovement.onHit = true;
             StartCoroutine(ColorChange());
             StartCoroutine(OnHitDelay(time));
